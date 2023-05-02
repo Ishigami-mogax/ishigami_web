@@ -1,10 +1,10 @@
-import {PropsWithChildren} from 'react'
+import {FC, PropsWithChildren} from 'react'
 import {Box} from "@mui/material"
 import {styles} from "./Example.style"
 import {PropsInterface} from "./Example.constant";
 import {useTranslation} from "react-i18next";
 
-const Example = (props:PropsWithChildren<PropsInterface>) => {
+const Example: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region Default
     const {} = styles
