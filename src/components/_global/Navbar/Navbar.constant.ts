@@ -4,14 +4,21 @@ export interface PropsInterface {
 
 }
 
-interface IItemMenu {
+export interface IItemMenu {
     title: string;
     icon:  string;
+    navigation: string;
 }
 
 export const itemMenu: IItemMenu[] = [
-    {title: "Home", icon: "home"},
-    {title: "Collections", icon: "folder"},
-    {title: "Stats", icon: "trending_up"},
-    {title: "Exercises", icon: "book"},
+    {title: "Home", icon: "home", navigation: "/"},
+    {title: "Collections", icon: "folder", navigation: "/collections"},
+    {title: "Stats", icon: "trending_up", navigation: "/stats"},
+    {title: "Exercises", icon: "book", navigation: "/exercises"},
 ];
+
+export const profileItem: IItemMenu = {
+    title: "Profile",
+    icon: "account_circle",
+    navigation: "/profile"
+}

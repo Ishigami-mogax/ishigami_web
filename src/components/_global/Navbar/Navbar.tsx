@@ -1,7 +1,7 @@
 import {FC, PropsWithChildren} from 'react'
 import {Box} from "@mui/material"
 import {styles} from "./Navbar.style"
-import {itemMenu, PropsInterface} from "./Navbar.constant";
+import {IItemMenu, itemMenu, profileItem, PropsInterface} from "./Navbar.constant";
 import {useTranslation} from "react-i18next";
 import NavItem from "./NavItem/NavItem";
 import {Image} from "@mui/icons-material";
@@ -31,15 +31,15 @@ const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
     //endregion
 
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'space-between', height: 1}}>
-            <Box sx={{width: 70}}>
+        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'space-between', height: '100%', width: "5%", borderRight: '1px solid #ddd'}}>
+            <Box sx={{width: 70, margin: 'auto'}}>
                 <img src="/ressources/images/ishigami_logo.png" alt="Ishigami-logo.png" style={{width: "inherit"}}/>
             </Box>
-            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
-                {itemMenu.map((item) => <NavItem value={item}/>)}
+            <Box sx={{display: 'flex', flexDirection: 'column', justifyContent: 'center', margin: 'auto', marginTop: '12rem'}}>
+                {itemMenu.map((item: IItemMenu) => <NavItem value={item}/>)}
             </Box>
-            <Box sx={{marginBottom: 1, height: "auto"}}>
-                {/*<NavItem value={"Profile"}/>*/}
+            <Box sx={{marginBottom: 1, height: "auto", marginTop: '12rem'}}>
+                <NavItem value={profileItem}/>
             </Box>
         </Box>
     );

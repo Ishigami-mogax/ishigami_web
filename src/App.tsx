@@ -7,7 +7,6 @@ import Navbar from "./components/_global/Navbar/Navbar";
 const App:React.FC = (): JSX.Element => {
     return <div>
         <RouterProvider router={router} />
-        <Navbar/>
     </div>
 }
 

@@ -1,10 +1,27 @@
 import { createBrowserRouter } from "react-router-dom";
 import Example from "./components/_example/Example";
+import Navbar from "./components/_global/Navbar/Navbar";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <div/>
+        element: <Navbar/>
+    },
+    {
+        path: "/collections",
+        element: <Navbar/>
+    },
+    {
+        path: "/stats",
+        element: <Navbar/>
+    },
+    {
+        path: "/exercises",
+        element: <Navbar/>
+    },
+    {
+        path: "/profile",
+        element: <Navbar/>
     },
     {
         path: "/test",
