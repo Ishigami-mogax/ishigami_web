@@ -1,10 +1,11 @@
 import {FC, PropsWithChildren} from 'react'
 import {Box, Typography} from "@mui/material"
 import {styles} from "./NavItem.style"
-import {PropsInterface} from "./NavItem.constant";
+import {ISelectedItemStyle, PropsInterface} from "./NavItem.constant";
 import {useTranslation} from "react-i18next";
 import Icon from '@mui/material/Icon';
 import {NavLink} from "react-router-dom";
+import {IIsActive} from "../Navbar.constant";
 
 const NavItem: FC<PropsInterface> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
     //region Default
@@ -30,7 +31,7 @@ const NavItem: FC<PropsInterface> = (props: PropsWithChildren<PropsInterface>): 
     //endregion
 
     return (
-        <NavLink to={navigation} style={({isActive}) => isActive ? {...selectedItem} : {...defaultStyle}}>
+        <NavLink to={navigation} style={({isActive}: IIsActive): ISelectedItemStyle => isActive ? {...selectedItem} : {...defaultStyle}}>
             <Box sx={{...boxStyle}}>
                 <Icon>{icon}</Icon>
                 <Typography sx={{fontSize: 15, fontWeight: 600, color: '#BC2727'}}>{title}</Typography>

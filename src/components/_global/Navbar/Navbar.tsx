@@ -36,7 +36,7 @@ const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
                 <img src="/ressources/images/ishigami_logo.png" alt="Ishigami-logo.png" style={{width: "inherit"}}/>
             </Box>
             <Box sx={{...principalItems}}>
-                {itemMenu.map((item: IItemMenu) => <NavItem value={item}/>)}
+                {itemMenu.map((item: IItemMenu): JSX.Element => <NavItem value={item}/>)}
             </Box>
             <Box sx={{...profileItemStyle}}>
                 <NavItem value={profileItem}/>

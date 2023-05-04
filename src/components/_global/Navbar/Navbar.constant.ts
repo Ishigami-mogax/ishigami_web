@@ -10,6 +10,10 @@ export interface IItemMenu {
     navigation: string;
 }
 
+export interface IIsActive {
+    isActive: boolean
+}
+
 export const itemMenu: IItemMenu[] = [
     {title: "Home", icon: "home", navigation: "/"},
     {title: "Collections", icon: "folder", navigation: "/collections"},
