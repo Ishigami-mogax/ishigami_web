@@ -4,7 +4,7 @@ import router from "./routes"
 import "./utils/i18n"
 
 const App:React.FC = (): JSX.Element => {
-    return <div>
+    return <div style={{height: "100%"}}>
         <RouterProvider router={router} />
     </div>
 }

@@ -4,23 +4,24 @@ export const styles = {
         flexDirection: 'column',
         alignItems: 'space-between',
         height: '100%',
-        width: "5%",
-        borderRight: '1px solid #cbcbcb'
+        width: 96,
+        borderRight: '1px solid #cbcbcb',
     },
     imageStyle: {
-        width: 70,
-        margin: 'auto'
+        width: "70px",
+        margin: 'auto',
+        marginTop: 2
     },
     principalItems: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
         margin: 'auto',
-        marginTop: 24
+        // marginTop: "100%"
     },
     profileItemStyle: {
         marginBottom: 1,
         height: "auto",
-        marginTop: 29
+        // marginTop: "100%"
     }
 }
