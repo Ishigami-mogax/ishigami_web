@@ -6,7 +6,6 @@ export const styles = {
         height: '100%',
         width: 96,
         borderRight: '1px solid #cbcbcb',
-        // paddingTop: 2
     },
     imageStyle: {
         width: "70px",
@@ -18,11 +17,11 @@ export const styles = {
         flexDirection: 'column',
         justifyContent: 'center',
         margin: 'auto',
-        marginTop: "100%"
+        // marginTop: "100%"
     },
     profileItemStyle: {
         marginBottom: 1,
         height: "auto",
-        marginTop: "100%"
+        // marginTop: "100%"
     }
 }
