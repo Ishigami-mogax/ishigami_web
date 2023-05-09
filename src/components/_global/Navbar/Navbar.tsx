@@ -7,7 +7,7 @@ import NavItem from "./NavItem/NavItem";
 import {Image} from "@mui/icons-material";
 import HomeIcon from "@mui/icons-material/Home";
 
-const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+const Navbar: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
     //region Default
     const {navbarStyle, imageStyle, principalItems, profileItemStyle} = styles
     const {children} = props

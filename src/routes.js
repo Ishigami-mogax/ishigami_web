@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Example from "./components/_example/Example";
 import Navbar from "./components/_global/Navbar/Navbar";
+import MethodCheck from "./components/Session/AdvancementMenu/MethodCheck/MethodCheck";
+import Session from "./components/Session/Session";
 
 const router = createBrowserRouter([
     {
@@ -25,7 +27,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/test",
-        element: <Example/>
+        element: <Session/>
     },
     {
         path: "*",
