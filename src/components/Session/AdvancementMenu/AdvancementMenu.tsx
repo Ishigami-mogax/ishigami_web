@@ -9,7 +9,7 @@ import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
 const AdvancementMenu: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region Default
-    const {} = styles
+    const { progressBarContainer, progressContainer, progressBar, titleContainer, titleStyle, percentStyle } = styles
     const { methodList } = props
     const { t } = useTranslation()
     //endregion
@@ -31,24 +31,24 @@ const AdvancementMenu: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithC
     //endregion
 
     return (
-        <Box>
-            <Box sx={{display:'flex', alignItems:'center'}}>
+        <>
+            <Box sx={titleContainer}>
                 <ArrowBackRoundedIcon/>
-                <Typography sx={{fontSize:38, fontWeight:'700'}}>Daily</Typography>
+                <Typography sx={titleStyle}>Daily</Typography>
             </Box>
-            <Box sx={{display:'flex', alignItems:'center'}}>
-                <Box sx={{ width: '100%'}}>
+            <Box sx={progressContainer}>
+                <Box sx={progressBarContainer}>
                     <LinearProgress variant="determinate"
                                     value={70}
-                                    sx={{borderRadius:1, backgroundColor: '#D9D9D9', height:8, '> span': { background: `linear-gradient(90deg, #FF1200 ${100 - 30}%, #521E1B 100%)`}}}
+                                    sx={{...progressBar, '> span': { background: `linear-gradient(90deg, #FF1200 ${100 - 30}%, #521E1B 100%)`}}}
                     />
                 </Box>
-                <Typography sx={{fontSize:18, fontWeight:'700', marginLeft:1}}>70%</Typography>
+                <Typography sx={percentStyle}>70%</Typography>
             </Box>
-            {methodList.map((method, index) => (
+            {methodList.map((method: { name:string, check:boolean }, index: number) => (
                 <MethodCheck {...method} end={(index+1)===methodList.length}/>
             ))}
-        </Box>
+        </>
     );
 };
 

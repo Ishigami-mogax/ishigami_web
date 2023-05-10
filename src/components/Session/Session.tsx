@@ -13,7 +13,7 @@ const Session: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
     const {} = styles
     const {} = props
     const { t } = useTranslation()
-    const methodList = [
+    const methodList : { name:string, check:boolean }[] = [
         {
             name:'Pair It',
             check:true
