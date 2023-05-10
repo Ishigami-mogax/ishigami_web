@@ -51,7 +51,9 @@ const Session: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     return (
         <Navbar>
-            <AdvancementMenu methodList={methodList}/>
+            <Box sx={{height:'100%'}}>
+                <AdvancementMenu methodList={methodList}/>
+            </Box>
         </Navbar>
     );
 };

@@ -1,5 +1,5 @@
 import {FC, PropsWithChildren} from 'react'
-import {Box, LinearProgress, Typography} from "@mui/material"
+import {Box, Button, LinearProgress, Typography} from "@mui/material"
 import {styles} from "./AdvancementMenu.style"
 import {PropsInterface} from "./AdvancementMenu.constant";
 import {useTranslation} from "react-i18next";
@@ -45,9 +45,12 @@ const AdvancementMenu: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithC
                 </Box>
                 <Typography sx={percentStyle}>70%</Typography>
             </Box>
-            {methodList.map((method: { name:string, check:boolean }, index: number) => (
+            <Box sx={{marginTop:5, marginBottom:5}}>
+            {methodList.map((method, index) => (
                 <MethodCheck {...method} end={(index+1)===methodList.length}/>
             ))}
+            </Box>
+            <Button sx={{backgroundColor:'red', color:'white', padding:'10px 20px'}}>Annuler la session</Button>
         </>
     );
 };
