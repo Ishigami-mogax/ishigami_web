@@ -8,7 +8,7 @@ const FormInput: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildr
 
     //region Default
     const {} = styles
-    const {id, label, name, type} = props
+    const {id, label, name, type, onChange} = props
     const {t} = useTranslation()
     //endregion
 
@@ -38,6 +38,7 @@ const FormInput: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildr
             label={label}
             name={name}
             autoComplete={name}
+            onChange={onChange}
         />
     );
 };

@@ -1,10 +1,11 @@
-import React, {FC, PropsWithChildren} from "react";
+import React, {FC, PropsWithChildren, useState} from "react";
 import {PropsInterface} from "./SignUpForm.constant";
 import {styles} from "./SignUpForm.style";
 import {useTranslation} from "react-i18next";
 import {Box, Divider, Grid, Link, Paper, Typography} from "@mui/material";
 import FormInput from "../../_input/FormInput/FormInput";
 import ButtonGlobal from "../../_input/Button/Button";
+import {logInWithEmailAndPassword, registerWithEmailAndPassword, signInWithGoogle} from "../../../utils/firebase";
 
 const SignUpForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
 
@@ -21,6 +22,10 @@ const SignUpForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
     //endregion
 
     //region UseState
+    const [pseudo, setPseudo] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
     //endregion
 
     //region UseEffect
@@ -28,6 +33,17 @@ const SignUpForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
     //endregion
 
     //region Handle
+    const handleGoogleRegister: () => Promise<void> = async (): Promise<void> => {
+        await signInWithGoogle();
+        document.location = '/';
+    }
+
+    const handleRegister: (email: string, password: string, confirmPassword: string) => Promise<void> = async (email: string, password: string): Promise<void> => {
+        if (email !== '' && password !== '' && confirmPassword === password) {
+            await registerWithEmailAndPassword(email, password);
+            document.location = '/';
+        }
+    }
     //endregion
 
 
@@ -38,16 +54,15 @@ const SignUpForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
                     Création de compte
                 </Typography>
                 <Box component="form" noValidate sx={{width: "100%"}}>
-                    <FormInput id={"pseudo"} label={"Pseudo"} name={"pseudo"}/>
-                    <FormInput id={"email"} type={"email"} label={"Adresse Email"} name={"email"}/>
-                    <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"}/>
+                    <FormInput id={"pseudo"} label={"Pseudo"} name={"pseudo"} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setPseudo(e.target.value)}/>
+                    <FormInput id={"email"} type={"email"} label={"Adresse Email"} name={"email"} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setEmail(e.target.value)}/>
+                    <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setPassword(e.target.value)}/>
                     <FormInput id={"password-confirm"} type={"password"} label={"Confirmation du mot de passe"}
-                               name={"password-confirm"}/>
-                    <ButtonGlobal type={"submit"} onClick={(): void => {
-                    }}>Créer un compte</ButtonGlobal>
+                               name={"password-confirm"} onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setConfirmPassword(e.target.value)}/>
+                    <ButtonGlobal onClick={(): Promise<void> => handleRegister(email, password, confirmPassword)}>Créer
+                        un compte</ButtonGlobal>
                     <Divider variant="fullWidth" sx={dividerStyle}/>
-                    <ButtonGlobal image={"ressources/images/google.svg"} onClick={(): void => {
-                    }}>
+                    <ButtonGlobal image={"ressources/images/google.svg"} onClick={handleGoogleRegister}>
                         avec Google
                     </ButtonGlobal>
                     <Box sx={existingAccount}>

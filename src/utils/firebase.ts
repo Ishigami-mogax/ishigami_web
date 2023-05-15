@@ -61,7 +61,6 @@ export const firebaseSetup = () => {
 
 const signInWithGoogle = async () => {
     try {
-        console.log("pass google")
         await signInWithPopup(auth, googleProvider)
     } catch (err: any) {
         alert(err.message)

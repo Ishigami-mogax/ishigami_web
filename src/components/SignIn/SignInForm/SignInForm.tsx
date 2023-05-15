@@ -22,20 +22,20 @@ const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
     //endregion
 
     //region UseState
-    const [email, setEmail] = useState<string | null>(null)
-    const [password, setPassword] = useState<string | null>(null)
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
     //endregion
 
     //region UseEffect
     //endregion
 
     //region Handle
-    const handleGoogleConnection = async (): Promise<void> => {
+    const handleGoogleConnection: () => Promise<void> = async (): Promise<void> => {
         await signInWithGoogle();
         document.location = '/';
     }
 
-    const handleConnection = async (email: string, password: string): Promise<void> => {
+    const handleConnection: (email: string, password: string) => Promise<void> = async (email: string, password: string): Promise<void> => {
         await logInWithEmailAndPassword(email, password);
         document.location = '/';
     }
@@ -49,9 +49,11 @@ const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
                     Connexion
                 </Typography>
                 <Box component="form" noValidate sx={{width: "100%"}}>
-                    <FormInput id={"email"} type={"email"} label={"Adresse Email"} name={"email"}/>
-                    <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"}/>
-                    <ButtonGlobal type={"submit"} onClick={handleConnection("", "")}>Se connecter</ButtonGlobal>
+                    <FormInput id={"email"} type={"email"} label={"Adresse Email"} name={"email"}
+                               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setEmail(e.target.value)}/>
+                    <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"}
+                               onChange={(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => setPassword(e.target.value)}/>
+                    <ButtonGlobal type={"submit"} onClick={(): Promise<void> => handleConnection(email, password)}>Se connecter</ButtonGlobal>
                     <Divider variant="fullWidth" sx={dividerStyle}/>
                     <ButtonGlobal image={"ressources/images/google.svg"} onClick={handleGoogleConnection}>
                         avec Google
