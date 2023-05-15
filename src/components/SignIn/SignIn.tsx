@@ -1,8 +1,11 @@
-import {FC, PropsWithChildren} from "react";
+import React, {FC, PropsWithChildren} from "react";
 import {PropsInterface} from "../SignUp/SignUp.constant";
 import {styles} from "./SignIn.style";
 import {useTranslation} from "react-i18next";
-import {Box} from "@mui/material";
+import {Box, CssBaseline, Grid} from "@mui/material";
+import BackgroundImage from "../SignUp/BackgroundImage/BackgroundImage";
+import SignUpForm from "../SignUp/SignUpForm/SignUpForm";
+import SignInForm from "./SignInForm/SignInForm";
 
 const SignIn: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
 //region Default
@@ -28,9 +31,11 @@ const SignIn: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
     //endregion
 
     return (
-        <Box>
-
-        </Box>
+        <Grid container component="main" sx={{height: '100vh'}}>
+            <CssBaseline/>
+            <BackgroundImage/>
+            <SignInForm/>
+        </Grid>
     );
 }
 
