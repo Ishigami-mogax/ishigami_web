@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Example from "./components/_example/Example";
 import Navbar from "./components/_global/Navbar/Navbar";
+import Buttons from "./components/_input/Button/Button";
 import MethodCheck from "./components/Session/AdvancementMenu/MethodCheck/MethodCheck";
 import Session from "./components/Session/Session";
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Navbar/>
+        element: <Navbar></Navbar>
     },
     {
         path: "/collections",
