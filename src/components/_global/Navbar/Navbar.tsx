@@ -10,7 +10,7 @@ import HomeIcon from "@mui/icons-material/Home";
 const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
     //region Default
     const {navbarStyle, imageStyle, principalItems, profileItemStyle} = styles
-    const {} = props
+    const {children} = props
     const {t} = useTranslation()
     //endregion
 
@@ -31,17 +31,22 @@ const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
     //endregion
 
     return (
-        <Box sx={navbarStyle}>
-            <Box sx={imageStyle}>
-                <img src="/ressources/images/ishigami_logo.png" alt="Ishigami-logo.png" style={{width: "inherit"}}/>
+        <>
+            <Box sx={navbarStyle}>
+                <Box sx={imageStyle}>
+                    <img src="/ressources/images/ishigami_logo.png" alt="Ishigami-logo.png" style={{width: "inherit"}}/>
+                </Box>
+                <Box sx={principalItems}>
+                    {itemMenu.map((item: IItemMenu): JSX.Element => <NavItem value={item} key={item.title}/>)}
+                </Box>
+                <Box sx={profileItemStyle}>
+                    <NavItem value={profileItem}/>
+                </Box>
             </Box>
-            <Box sx={principalItems}>
-                {itemMenu.map((item: IItemMenu): JSX.Element => <NavItem value={item} key={item.title}/>)}
+            <Box>
+                {children}
             </Box>
-            <Box sx={profileItemStyle}>
-                <NavItem value={profileItem}/>
-            </Box>
-        </Box>
+        </>
     );
 }
 

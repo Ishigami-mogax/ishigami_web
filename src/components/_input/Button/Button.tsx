@@ -3,11 +3,12 @@ import {PropsInterface} from "./Button.constant";
 import {styles} from "./Button.style";
 import {useTranslation} from "react-i18next";
 import {Button} from "@mui/material";
+import Icon from "@mui/material/Icon";
 
 const Buttons: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region Default
-    const {} = styles
+    const {buttonStyle} = styles
     const {text, icon, onClick} = props
     const { t } = useTranslation()
     //endregion
@@ -29,8 +30,9 @@ const Buttons: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithChildren<
     //endregion
 
     return (
-        <Button type={"submit"} onClick={() => onClick}>
-            {text}
+        <Button variant="contained" sx={buttonStyle} type={"submit"} onClick={onClick}>
+            {icon && <Icon>{icon}</Icon>}
+            {t(text)}
         </Button>
     );
 };
