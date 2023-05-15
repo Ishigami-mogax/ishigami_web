@@ -1,14 +1,15 @@
 import {FC, PropsWithChildren} from "react";
-import {PropsInterface} from "../SignUp/SignUp.constant";
-import {styles} from "./SignIn.style";
+import {PropsInterface} from "../../_example/Example.constant";
+import {styles} from "../../_example/Example.style";
 import {useTranslation} from "react-i18next";
 import {Box} from "@mui/material";
 
-const SignIn: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
-//region Default
+const FormInput: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
+
+    //region Default
     const {} = styles
     const {} = props
-    const {t} = useTranslation()
+    const { t } = useTranslation()
     //endregion
 
     //region Context
@@ -32,6 +33,6 @@ const SignIn: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
 
         </Box>
     );
-}
+};
 
-export default SignIn;
+export default FormInput;
