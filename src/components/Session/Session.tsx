@@ -6,6 +6,7 @@ import {useTranslation} from "react-i18next";
 import Navbar from "../_global/Navbar/Navbar";
 import MethodCheck from "./AdvancementMenu/MethodCheck/MethodCheck";
 import AdvancementMenu from "./AdvancementMenu/AdvancementMenu";
+import PairIt from "./Method/PairIt/PairIt";
 
 const Session: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
@@ -51,7 +52,10 @@ const Session: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     return (
         <Navbar>
-            <AdvancementMenu methodList={methodList}/>
+            <Box sx={{display:'flex'}}>
+                <AdvancementMenu methodList={methodList}/>
+                    <PairIt/>
+            </Box>
         </Navbar>
     );
 };

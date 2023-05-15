@@ -31,7 +31,7 @@ const AdvancementMenu: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithC
     //endregion
 
     return (
-        <>
+        <Box sx={{borderRight: '1px solid #cbcbcb', margin:2, paddingRight:2}}>
             <Box sx={titleContainer}>
                 <ArrowBackRoundedIcon/>
                 <Typography sx={titleStyle}>Daily</Typography>
@@ -48,7 +48,7 @@ const AdvancementMenu: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithC
             {methodList.map((method: { name:string, check:boolean }, index: number) => (
                 <MethodCheck {...method} end={(index+1)===methodList.length}/>
             ))}
-        </>
+        </Box>
     );
 };
 
