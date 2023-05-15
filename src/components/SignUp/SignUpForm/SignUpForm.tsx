@@ -43,7 +43,7 @@ const SignUpForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
                     <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"}/>
                     <FormInput id={"password-confirm"} type={"password"} label={"Confirmation du mot de passe"}
                                name={"password-confirm"}/>
-                    <ButtonGlobal onClick={(): void => {
+                    <ButtonGlobal type={"submit"} onClick={(): void => {
                     }}>Créer un compte</ButtonGlobal>
                     <Divider variant="fullWidth" sx={dividerStyle}/>
                     <ButtonGlobal image={"ressources/images/google.svg"} onClick={(): void => {

@@ -9,7 +9,7 @@ const ButtonGlobal: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChi
 
     //region Default
     const {buttonStyle, imageStyle} = styles
-    const {children, image, icon, onClick} = props
+    const {children, type, image, icon, onClick} = props
     const {t} = useTranslation()
     //endregion
 
@@ -30,7 +30,7 @@ const ButtonGlobal: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChi
     //endregion
 
     return (
-        <Button variant="contained" fullWidth sx={buttonStyle} type={"submit"} onClick={onClick}>
+        <Button variant="contained" fullWidth sx={buttonStyle} type={type} onClick={onClick}>
             {image && <Box sx={{width: '30px'}}>
                 <img src={image} alt={image} style={imageStyle}/>
             </Box>}

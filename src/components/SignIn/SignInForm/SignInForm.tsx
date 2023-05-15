@@ -1,11 +1,11 @@
-import React, {FC, PropsWithChildren} from "react";
+import React, {FC, PropsWithChildren, useState} from "react";
 import {PropsInterface} from "./SignInForm.constant";
 import {styles} from "./SignInForm.style";
 import {useTranslation} from "react-i18next";
 import {Box, Divider, Grid, Link, Paper, Typography} from "@mui/material";
 import FormInput from "../../_input/FormInput/FormInput";
 import ButtonGlobal from "../../_input/Button/Button";
-import {signInWithGoogle} from "../../../utils/firebase";
+import {logInWithEmailAndPassword, signInWithGoogle} from "../../../utils/firebase";
 
 const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
 
@@ -22,17 +22,22 @@ const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
     //endregion
 
     //region UseState
+    const [email, setEmail] = useState<string | null>(null)
+    const [password, setPassword] = useState<string | null>(null)
     //endregion
 
     //region UseEffect
-
     //endregion
 
     //region Handle
     const handleGoogleConnection = async (): Promise<void> => {
-        console.log("test")
-        await signInWithGoogle()
-        // document.location = '/'
+        await signInWithGoogle();
+        document.location = '/';
+    }
+
+    const handleConnection = async (email: string, password: string): Promise<void> => {
+        await logInWithEmailAndPassword(email, password);
+        document.location = '/';
     }
     //endregion
 
@@ -46,8 +51,7 @@ const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
                 <Box component="form" noValidate sx={{width: "100%"}}>
                     <FormInput id={"email"} type={"email"} label={"Adresse Email"} name={"email"}/>
                     <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"}/>
-                    <ButtonGlobal onClick={(): void => {
-                    }}>Se connecter</ButtonGlobal>
+                    <ButtonGlobal type={"submit"} onClick={handleConnection("", "")}>Se connecter</ButtonGlobal>
                     <Divider variant="fullWidth" sx={dividerStyle}/>
                     <ButtonGlobal image={"ressources/images/google.svg"} onClick={handleGoogleConnection}>
                         avec Google
