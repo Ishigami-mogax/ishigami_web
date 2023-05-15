@@ -1,8 +1,11 @@
-import React, { Suspense } from 'react'
+import React, {Suspense} from 'react'
 import App from "./App";
 import {createRoot, Root} from "react-dom/client";
 import './utils/i18n'
 import './styles/globalStyle.css'
+import {firebaseSetup} from "./utils/firebase"
+
+firebaseSetup();
 
 const rootElement: HTMLElement | null = document.getElementById("root")
 const root: Root = createRoot(rootElement!!)

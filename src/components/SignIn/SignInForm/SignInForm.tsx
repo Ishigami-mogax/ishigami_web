@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {Box, Divider, Grid, Link, Paper, Typography} from "@mui/material";
 import FormInput from "../../_input/FormInput/FormInput";
 import ButtonGlobal from "../../_input/Button/Button";
+import {signInWithGoogle} from "../../../utils/firebase";
 
 const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
 
@@ -28,6 +29,11 @@ const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
     //endregion
 
     //region Handle
+    const handleGoogleConnection = async (): Promise<void> => {
+        console.log("test")
+        await signInWithGoogle()
+        // document.location = '/'
+    }
     //endregion
 
 
@@ -38,13 +44,12 @@ const SignInForm: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element =
                     Connexion
                 </Typography>
                 <Box component="form" noValidate sx={{width: "100%"}}>
-                    <FormInput id={"pseudo"} label={"Pseudo"} name={"pseudo"}/>
                     <FormInput id={"email"} type={"email"} label={"Adresse Email"} name={"email"}/>
                     <FormInput id={"password"} type={"password"} label={"Mot de passe"} name={"password"}/>
                     <ButtonGlobal onClick={(): void => {
                     }}>Se connecter</ButtonGlobal>
                     <Divider variant="fullWidth" sx={dividerStyle}/>
-                    <ButtonGlobal image={"ressources/images/google.svg"} onClick={(): void => {}}>
+                    <ButtonGlobal image={"ressources/images/google.svg"} onClick={handleGoogleConnection}>
                         avec Google
                     </ButtonGlobal>
                     <Box sx={existingAccount}>

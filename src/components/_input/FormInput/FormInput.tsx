@@ -29,19 +29,16 @@ const FormInput: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildr
     //endregion
 
     return (
-        <Box>
-            <TextField
-                // sx={TextFieldMui}
-                margin="normal"
-                required
-                fullWidth
-                type={type}
-                id={id}
-                label={label}
-                name={name}
-                autoComplete={name}
-            />
-        </Box>
+        <TextField
+            margin="normal"
+            required
+            fullWidth
+            type={type}
+            id={id}
+            label={label}
+            name={name}
+            autoComplete={name}
+        />
     );
 };
 
