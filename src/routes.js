@@ -5,7 +5,7 @@ import Navbar from "./components/_global/Navbar/Navbar";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Navbar/>
+        element: <Navbar></Navbar>
     },
     {
         path: "/collections",
