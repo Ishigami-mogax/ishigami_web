@@ -4,6 +4,9 @@ import { styles } from "./Collections.style";
 import { useTranslation } from "react-i18next";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import Icon from "@mui/material/Icon";
+import CategoryCard from "./CategoryCard/CategoryCard";
+import KanjiCard from "./KanjiCard/KanjiCard";
+import Buttons from "../_input/Button/Button";
 
 const Collections: FC = (
   props: PropsWithChildren<PropsInterface>
@@ -32,82 +35,25 @@ const Collections: FC = (
 
   return (
     <Grid container component="main" sx={{ height: "100vh" }}>
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={4}
-        component={Paper}
-        elevation={6}
-        square
-        sx={{ backgroundColor: "red" }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Grid item xs={12} sm={8} md={4} component={Paper} elevation={2} square>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            marginTop: 3,
+            marginLeft: 3,
+          }}
+        >
           <Icon sx={{ fontSize: "xx-large", width: 50 }}>arrow_back</Icon>
           <Typography variant={"h4"}>Animaux</Typography>
         </Box>
         <Box>
-          <Paper
-            elevation={6}
-            square
-            sx={{ backgroundColor: "green", borderRadius: 2, padding: 1 }}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Box sx={{ marginLeft: 3 }}>
-                <Typography variant={"body1"}>38 mots</Typography>
-                <Typography variant={"h5"}>Préhistorique</Typography>
-              </Box>
-              <Box sx={{ display: "flex", marginRight: 2 }}>
-                <Typography variant={"h5"}>82%</Typography>
-                <Icon>play_arrow</Icon>
-              </Box>
-            </Box>
-          </Paper>
-
           <Box sx={{ padding: 3 }}>
-            <Paper
-              elevation={6}
-              square
-              sx={{ backgroundColor: "yellow", borderRadius: 2, padding: 1 }}
-            >
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <Box sx={{ marginLeft: 1, display: "flex" }}>
-                  <div
-                    style={{
-                      backgroundColor: "black",
-                      width: "4px",
-                      borderRadius: "10px",
-                      marginRight: "10px",
-                    }}
-                  />
-                  <Typography variant={"h5"}>Chien</Typography>
-                </Box>
-                <Box sx={{ display: "flex" }}>
-                  <Typography variant={"h5"} sx={{ fontSize: "2rem" }}>
-                    犬
-                  </Typography>
-                  <Box>
-                    <Typography variant={"body1"}>いぬ</Typography>
-                    <Typography variant={"body1"}>テン</Typography>
-                  </Box>
-                </Box>
-                <Box sx={{ display: "flex", marginRight: 2 }}>
-                  <Icon>volume_up</Icon>
-                </Box>
-              </Box>
-            </Paper>
+            <CategoryCard />
+            <KanjiCard />
+            <Box sx={{ padding: 5 }}>
+              <Buttons text={"Créer une catégorie"} onClick={() => {}} />
+            </Box>
           </Box>
         </Box>
       </Grid>
@@ -115,15 +61,81 @@ const Collections: FC = (
         item
         xs={12}
         sm={8}
-        md={5}
+        md={8}
         component={Paper}
         elevation={6}
         square
-        sx={{ backgroundColor: "red" }}
+        sx={{ backgroundColor: "red", display: "flex" }}
       >
-        {/*<Box sx={{ width: "100%" }}>*/}
-        <Typography sx={{ width: "100%" }}>test</Typography>
-        {/*</Box>*/}
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={6}
+          component={Box}
+          sx={{ backgroundColor: "blue", height: "100vh" }}
+        >
+          <Paper
+            elevation={6}
+            square
+            sx={{ margin: 3, marginBottom: 0, height: "95%" }}
+          >
+            <Box>
+              <Typography variant={"h4"}>test</Typography>
+            </Box>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography variant={"h5"}>Le kanji :</Typography>
+              <Icon sx={{ fontSize: "xx-large", width: 50 }}>volume_up</Icon>
+            </Box>
+            <Box sx={{ textAlign: "center" }}>
+              <Typography variant={"h1"}>犬</Typography>
+            </Box>
+            <Box sx={{ display: "flex" }}>
+              <Typography variant={"h5"}>Traits :</Typography>
+              <Typography variant={"h5"}>4 Traits</Typography>
+            </Box>
+            <Box sx={{}}>
+              <Typography variant={"h5"}>Lectures :</Typography>
+              <Box sx={{ paddingRight: 5, paddingLeft: 5 }}>
+                <Typography variant={"h5"}>On : いぬ</Typography>
+                <Typography variant={"h5"}>Kun : テン</Typography>
+              </Box>
+            </Box>
+            <Box>
+              <Typography variant={"h5"}>Clés :</Typography>
+              <Box sx={{ paddingRight: 5, paddingLeft: 5 }}>
+                <Typography variant={"h5"}>犬 : chien</Typography>
+              </Box>
+            </Box>
+          </Paper>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          sm={8}
+          md={6}
+          component={Box}
+          sx={{ backgroundColor: "blue", height: "100vh" }}
+        >
+          <Paper
+            elevation={6}
+            square
+            sx={{ margin: 3, marginBottom: 0, height: "20%" }}
+          >
+            <Box>
+              <Typography variant={"h5"}>Description :</Typography>
+            </Box>
+          </Paper>
+          <Paper
+            elevation={6}
+            square
+            sx={{ margin: 3, marginBottom: 0, height: "70%" }}
+          >
+            <Box>
+              <Typography variant={"h5"}>Vocabulaire :</Typography>
+            </Box>
+          </Paper>
+        </Grid>
       </Grid>
     </Grid>
   );
