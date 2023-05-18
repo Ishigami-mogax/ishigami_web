@@ -9,7 +9,8 @@ const KanjiCard: FC = (
   props: PropsWithChildren<PropsInterface>
 ): JSX.Element => {
   //region Default
-  const {} = styles;
+  const { paperStyle, boxStyle, boxSignification, leftColor, volumeStyle } =
+    styles;
   const {} = props;
   const { t } = useTranslation();
   //endregion
@@ -34,28 +35,10 @@ const KanjiCard: FC = (
     <Box>
       {kanjis &&
         kanjis.map((kanji) => (
-          <Paper
-            elevation={2}
-            square
-            sx={{ borderRadius: 2, padding: 1, margin: 1 }}
-            key={kanji.id}
-          >
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <Box sx={{ marginLeft: 1, display: "flex" }}>
-                <div
-                  style={{
-                    backgroundColor: "black",
-                    width: "4px",
-                    borderRadius: "10px",
-                    marginRight: "10px",
-                  }}
-                />
+          <Paper elevation={2} square sx={paperStyle} key={kanji.id}>
+            <Box sx={boxStyle}>
+              <Box sx={boxSignification}>
+                <div style={leftColor} />
                 <Typography variant={"h5"}>{kanji.signification}</Typography>
               </Box>
               <Box sx={{ display: "flex" }}>
@@ -70,7 +53,7 @@ const KanjiCard: FC = (
                   ))}
                 </Box>
               </Box>
-              <Box sx={{ display: "flex", marginRight: 2 }}>
+              <Box sx={volumeStyle}>
                 <Icon>volume_up</Icon>
               </Box>
             </Box>
