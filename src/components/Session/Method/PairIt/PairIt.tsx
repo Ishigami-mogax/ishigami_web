@@ -12,13 +12,6 @@ const PairIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
     const {} = props
     const { t } = useTranslation()
 
-    const [shaking, setShaking] = useState(false)
-
-    const shakeAnimation = useSpring({
-        transform: shaking ? 'translate3d(0, 0, 0)' : 'translate3d(-10px, 0, 0)',
-        config: { tension: 300, friction: 10 },
-    })
-
     //endregion
 
     //region Context
@@ -89,8 +82,6 @@ const PairIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region UseEffect
     useEffect(() => {
-        console.log("R:", right)
-        console.log("L:", left)
         if(right && left) {
 
             if(right == left) {

@@ -1,14 +1,16 @@
-import {FC, PropsWithChildren, useState} from 'react'
-import {Box, Button, Card, CardContent} from "@mui/material"
+import {FC, PropsWithChildren, useEffect, useState} from 'react'
+import {Box, Card, CardContent, Typography} from "@mui/material"
 import {styles} from "./RecallIt.style"
 import {PropsInterface} from "./RecallIt.constant";
 import {useTranslation} from "react-i18next";
 import moment from "moment";
+import Button from "../../../_input/Button/Button";
+import {useInterval} from "usehooks-ts";
 
 const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region Default
-    const {} = styles
+    const { cardListElement, cardMain, mainContainer, mainTypo, itemTypo} = styles
     const {} = props
     const { t } = useTranslation()
     const [listElement, setListElement] = useState([
@@ -54,54 +56,77 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
     //endregion
 
     //region UseEffect
-    setInterval(() => {
-        if (loopTime >= 30000) {
-            setHide(3)
-        } else if (hide == 1) {
+    useEffect(() => {
+        const interval = setInterval(() => {handleSetTime()}, 1000);
+        return () => clearInterval(interval);
+    }, [])
+
+    useEffect(() => {
+        // console.log(loopTime)
+    }, [loopTime])
+
+    useInterval(() => {
+        console.log(loopTime)
+        if(loopTime>=10000){
+            setLoopTime(0)
+            setStartTime(moment())
+        } else {
             setLoopTime(moment().diff(startTime, "millisecond"))
         }
     }, 1)
+
     //endregion
 
     //region Handle
+
+    const handleSetTime = () => {}
+
     const handleRecall = (recall: boolean) => {
         setHide(1)
-        const tempElement = findElements.shift()!!
+        const tempElement = listElement.shift()!!
         if (recall) {
-            setToFindElements([...findElements])
+            setListElement([...listElement])
         } else {
-            setToFindElements([...findElements, tempElement])
+            setListElement([...listElement, tempElement])
         }
 
         setStartTime(moment())
         setLoopTime(0)
-
     }
     //endregion
 
     return (
-        <Box>
-            <Card><CardContent>
-                <Card><CardContent>
-
+        <Box sx={mainContainer}>
+            <Card><CardContent sx={cardMain}>
+                <Card sx={cardListElement} elevation={8}><CardContent>
+                    <Typography sx={mainTypo}>{listElement[0].sharp}</Typography>
                 </CardContent></Card>
+
                 <Box>
 
                 </Box>
-                <Card><CardContent>
 
+                <Card sx={cardListElement} elevation={8}><CardContent>
+                    <Typography sx={mainTypo}>{listElement[0].blur}</Typography>
                 </CardContent></Card>
+
+                <Box sx={{marginTop:3, width:"80%"}}>
+                    <Box sx={{display: hide == 1 ? 'flex' : 'none'}}>
+                        <Button onClick={() => setHide(2)} text={"Afficher"}/>
+                    </Box>
+
+                    <Box sx={{display: hide == 3 ? 'flex' : 'none'}}>
+                        <Button onClick={() => handleRecall(false)} text={"Continuer"}/>
+                    </Box>
+
+                    <Box sx={{display: hide == 2 ? 'flex' : 'none'}}>
+                        <Button onClick={() => handleRecall(true)} text={"Souvenu"}/>
+                        <Button onClick={() => handleRecall(false)} text={"Oublier"}/>
+                    </Box>
+                </Box>
+
+
             </CardContent></Card>
-            <Box sx={{display: hide == 1 ? 'flex' : 'none'}}>
-                <Button onClick={() => setHide(2)}>Afficher</Button>
-            </Box>
-            <Box sx={{display: hide == 3 ? 'flex' : 'none'}}>
-                <Button onClick={() => handleRecall(false)}>Continuer</Button>
-            </Box>
-            <Box sx={{display: hide == 2 ? 'flex' : 'none'}}>
-                <Button onClick={() => handleRecall(true)}>Souvenu</Button>
-                <Button onClick={() => handleRecall(false)}>Oublier</Button>
-            </Box>
         </Box>
     );
 };

@@ -5,6 +5,7 @@ export const styles = {
         textTransform: "none",
         fontWeight: "bold",
         color: "#fff",
+        width:1,
         "&:hover": {
             backgroundColor: "#D40909"
         }
