@@ -8,6 +8,7 @@ export const styles = {
   iconStyle: {
     fontSize: "xx-large",
     width: 50,
+    cursor: "pointer",
   },
   gridKanjiDetail: {
     display: "flex",

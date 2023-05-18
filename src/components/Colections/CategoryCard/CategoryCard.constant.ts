@@ -1,4 +1,12 @@
-export interface PropsInterface {}
+export interface PropsInterface {
+  category: {
+    _count: { word_list: number };
+    name: string;
+    id: string;
+    percent: number;
+  };
+  onClick: () => void;
+}
 
 export const categories: {
   _count: { word_list: number };

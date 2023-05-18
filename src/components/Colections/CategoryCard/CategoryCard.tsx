@@ -5,12 +5,12 @@ import { useTranslation } from "react-i18next";
 import { Box, Paper, Typography } from "@mui/material";
 import Icon from "@mui/material/Icon";
 
-const CategoryCard: FC = (
+const CategoryCard: FC<PropsWithChildren<PropsInterface>> = (
   props: PropsWithChildren<PropsInterface>
 ): JSX.Element => {
   //region Default
   const { paperStyle, boxStyle, percentStyle } = styles;
-  const {} = props;
+  const { category, onClick } = props;
   const { t } = useTranslation();
   //endregion
 
@@ -31,24 +31,21 @@ const CategoryCard: FC = (
   //endregion
 
   return (
-    <Box>
-      {categories &&
-        categories.map((category) => (
-          <Paper elevation={6} square sx={paperStyle} key={category.id}>
-            <Box sx={boxStyle}>
-              <Box sx={{ marginLeft: 3 }}>
-                <Typography variant={"body1"}>
-                  {category._count.word_list} mots
-                </Typography>
-                <Typography variant={"h5"}>{category.name}</Typography>
-              </Box>
-              <Box sx={percentStyle}>
-                <Typography variant={"h5"}>{category.percent}%</Typography>
-                <Icon>play_arrow</Icon>
-              </Box>
-            </Box>
-          </Paper>
-        ))}
+    <Box key={category.id}>
+      <Paper elevation={6} square sx={paperStyle} onClick={onClick}>
+        <Box sx={boxStyle}>
+          <Box sx={{ marginLeft: 3 }}>
+            <Typography variant={"body1"}>
+              {category._count.word_list} mots
+            </Typography>
+            <Typography variant={"h5"}>{category.name}</Typography>
+          </Box>
+          <Box sx={percentStyle}>
+            <Typography variant={"h5"}>{category.percent}%</Typography>
+            <Icon>play_arrow</Icon>
+          </Box>
+        </Box>
+      </Paper>
     </Box>
   );
 };

@@ -3,6 +3,7 @@ export const styles = {
     borderRadius: 2,
     padding: 1,
     margin: 1,
+    cursor: "pointer",
   },
   boxStyle: {
     display: "flex",

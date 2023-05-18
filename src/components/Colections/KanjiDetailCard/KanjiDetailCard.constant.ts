@@ -1,3 +1,4 @@
 export interface PropsInterface {
-  item: {};
+  // tslint:disable-next-line:no-any
+  kanji?: any;
 }
