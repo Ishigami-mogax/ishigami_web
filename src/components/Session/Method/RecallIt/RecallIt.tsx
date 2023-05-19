@@ -1,5 +1,5 @@
 import {FC, PropsWithChildren, useEffect, useState} from 'react'
-import {Box, Card, CardContent, Typography} from "@mui/material"
+import {Box, Card, CardContent, LinearProgress, Typography} from "@mui/material"
 import {styles} from "./RecallIt.style"
 import {PropsInterface} from "./RecallIt.constant";
 import {useTranslation} from "react-i18next";
@@ -56,21 +56,12 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
     //endregion
 
     //region UseEffect
-    useEffect(() => {
-        const interval = setInterval(() => {handleSetTime()}, 1000);
-        return () => clearInterval(interval);
-    }, [])
-
-    useEffect(() => {
-        // console.log(loopTime)
-    }, [loopTime])
 
     useInterval(() => {
         console.log(loopTime)
-        if(loopTime>=10000){
-            setLoopTime(0)
-            setStartTime(moment())
-        } else {
+        if(loopTime>=30000){
+            setHide(3)
+        } else if(hide != 2) {
             setLoopTime(moment().diff(startTime, "millisecond"))
         }
     }, 1)
@@ -78,8 +69,6 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
     //endregion
 
     //region Handle
-
-    const handleSetTime = () => {}
 
     const handleRecall = (recall: boolean) => {
         setHide(1)
@@ -102,12 +91,17 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
                     <Typography sx={mainTypo}>{listElement[0].sharp}</Typography>
                 </CardContent></Card>
 
-                <Box>
-
+                <Box sx={{width:"80%"}}>
+                    <LinearProgress variant="determinate" value={(loopTime/30000)*100} sx={{
+                        backgroundColor:'#D9D9D9',
+                        "span":{
+                            backgroundColor:'#FF0000',
+                        }
+                    }}/>
                 </Box>
 
                 <Card sx={cardListElement} elevation={8}><CardContent>
-                    <Typography sx={mainTypo}>{listElement[0].blur}</Typography>
+                    <Typography sx={{...mainTypo, ...((hide != 2 && hide != 3 ) && {filter: "blur(10px)"}) }}>{listElement[0].blur}</Typography>
                 </CardContent></Card>
 
                 <Box sx={{marginTop:3, width:"80%"}}>
@@ -119,12 +113,11 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
                         <Button onClick={() => handleRecall(false)} text={"Continuer"}/>
                     </Box>
 
-                    <Box sx={{display: hide == 2 ? 'flex' : 'none'}}>
+                    <Box sx={{display: hide == 2 ? 'flex' : 'none', flexDirection:'column'}}>
                         <Button onClick={() => handleRecall(true)} text={"Souvenu"}/>
                         <Button onClick={() => handleRecall(false)} text={"Oublier"}/>
                     </Box>
                 </Box>
-
 
             </CardContent></Card>
         </Box>

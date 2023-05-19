@@ -6,6 +6,7 @@ export const styles = {
         fontWeight: "bold",
         color: "#fff",
         width:1,
+        margin:1,
         "&:hover": {
             backgroundColor: "#D40909"
         }
