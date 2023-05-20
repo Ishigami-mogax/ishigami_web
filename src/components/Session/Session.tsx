@@ -9,6 +9,7 @@ import AdvancementMenu from "./AdvancementMenu/AdvancementMenu";
 import PairIt from "./Method/PairIt/PairIt";
 import GuessIt from "./Method/GuessIt/GuessIt";
 import RecallIt from "./Method/RecallIt/RecallIt";
+import TypeIt from "./Method/TypeIt/TypeIt";
 
 const Session: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
@@ -56,7 +57,7 @@ const Session: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
         <Navbar>
             <Box sx={{display:'flex'}}>
                 <AdvancementMenu methodList={methodList}/>
-                <RecallIt/>
+                <TypeIt/>
             </Box>
         </Navbar>
     );
