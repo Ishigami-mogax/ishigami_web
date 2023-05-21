@@ -1,46 +1,60 @@
-import React, {FC, PropsWithChildren} from "react";
-import {PropsInterface} from "./FormInput.constant";
-import {styles} from "../../_example/Example.style";
-import {useTranslation} from "react-i18next";
-import {Box, TextField} from "@mui/material";
+import React, { type FC, type PropsWithChildren } from "react"
+import type { PropsInterface } from "./FormInput.constant"
+import { styles } from "../../_example/Example.style"
+import { useTranslation } from "react-i18next"
+import { IconButton, InputAdornment, TextField } from "@mui/material"
+import VisibilityIcon from "@mui/icons-material/Visibility"
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
 
 const FormInput: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+  //region Default
+  const {} = styles
+  const { id, label, name, type, onChange, handleShowPassword } = props
+  const { t } = useTranslation()
+  //endregion
 
-    //region Default
-    const {} = styles
-    const {id, label, name, type, onChange} = props
-    const {t} = useTranslation()
-    //endregion
+  //region Context
+  //endregion
 
-    //region Context
-    //endregion
+  //region Route
+  //endregion
 
-    //region Route
-    //endregion
+  //region UseState
+  //endregion
 
-    //region UseState
-    //endregion
+  //region UseEffect
 
-    //region UseEffect
+  //endregion
 
-    //endregion
+  //region Handle
+  //endregion
 
-    //region Handle
-    //endregion
+  return (
+    <TextField
+      margin="normal"
+      required
+      fullWidth
+      type={type}
+      id={id}
+      label={label}
+      name={name}
+      autoComplete={name}
+      onChange={onChange}
+      InputProps={
+        name === "password"
+          ? {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleShowPassword}>
+                    {type === "password" ? <VisibilityIcon /> : <VisibilityOffIcon />}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }
+          : undefined
+      }
+    />
+  )
+}
 
-    return (
-        <TextField
-            margin="normal"
-            required
-            fullWidth
-            type={type}
-            id={id}
-            label={label}
-            name={name}
-            autoComplete={name}
-            onChange={onChange}
-        />
-    );
-};
-
-export default FormInput;
+export default FormInput

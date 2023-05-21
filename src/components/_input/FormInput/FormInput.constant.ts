@@ -1,9 +1,10 @@
-import {ChangeEventHandler} from "react";
+import { ChangeEventHandler } from "react"
 
 export interface PropsInterface {
-    id: string;
-    label: string;
-    name: string;
-    type?: string;
-    onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  id: string
+  label: string
+  name: string
+  type?: string
+  onChange?: ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
+  handleShowPassword?: () => void
 }

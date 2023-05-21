@@ -1,44 +1,42 @@
-import React, {FC, PropsWithChildren} from 'react'
-import {CssBaseline, Grid} from "@mui/material"
-import {PropsInterface} from "../_global/Navbar/Navbar.constant";
-import {jsx} from "@emotion/react";
-import {useTranslation} from "react-i18next";
-import {styles} from "./SignUp.style";
-import BackgroundImage from "./BackgroundImage/BackgroundImage";
-import SignUpForm from "./SignUpForm/SignUpForm";
+import React, { type FC, type PropsWithChildren, useState } from "react"
+import { CssBaseline, Grid } from "@mui/material"
+import type { PropsInterface } from "./SignUp.constant"
+import { useTranslation } from "react-i18next"
+import { styles } from "./SignUp.style"
+import BackgroundImage from "./BackgroundImage/BackgroundImage"
+import SignUpForm from "./SignUpForm/SignUpForm"
 
-const SignUp: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+const SignUp: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+  //region Default
+  const {} = styles
+  const { sign } = props
+  const { t } = useTranslation()
+  //endregion
 
-    //region Default
-    const {} = styles
-    const {} = props
-    const {t} = useTranslation()
-    //endregion
+  //region Context
+  //endregion
 
-    //region Context
-    //endregion
+  //region Route
+  //endregion
 
-    //region Route
-    //endregion
+  //region UseState
+  const [isSignup, setIsSignUp] = useState(sign)
+  //endregion
 
-    //region UseState
-    //endregion
+  //region UseEffect
 
-    //region UseEffect
+  //endregion
 
-    //endregion
+  //region Handle
+  //endregion
 
-    //region Handle
-    //endregion
+  return (
+    <Grid container component="main" sx={{ height: "100vh" }}>
+      <CssBaseline />
+      <BackgroundImage />
+      <SignUpForm signUp={sign} />
+    </Grid>
+  )
+}
 
-
-    return (
-        <Grid container component="main" sx={{height: '100vh'}}>
-            <CssBaseline/>
-            <BackgroundImage/>
-            <SignUpForm/>
-        </Grid>
-    );
-};
-
-export default SignUp;
+export default SignUp

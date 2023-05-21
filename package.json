@@ -7,6 +7,7 @@
     "@emotion/styled": "^11.10.6",
     "@emotion/weak-memoize": "^0.3.1",
     "@firebase/analytics": "^0.10.0",
+    "@firebase/auth": "^0.23.2",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.2",
     "@testing-library/jest-dom": "^5.16.5",
