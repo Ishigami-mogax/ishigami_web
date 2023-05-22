@@ -1,5 +1,5 @@
 import { type FC, type PropsWithChildren, useEffect, useState } from "react"
-import { type ICategory, type IWord, type PropsInterface } from "./Collections.constant"
+import { type ICategory, type IWord, type IWordList, type PropsInterface } from "./Collections.constant"
 import { styles } from "./Collections.style"
 import { Box, Grid, Paper, Typography } from "@mui/material"
 import Icon from "@mui/material/Icon"
@@ -22,10 +22,10 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
   //endregion
 
   //region UseState
+  const [category, setCategory] = useState<ICategory>()
   const [categories, setCategories] = useState<ICategory[]>([])
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [superCategoryId, setSuperCategoryId] = useState<string>("")
-  const [kanjis, setKanjis] = useState<IWord[]>([])
+  const [kanjis, setKanjis] = useState<IWordList[]>([])
   const [kanji, setKanji] = useState<IWord>()
   const [popupIsOpen, setPopupIsOpen] = useState<boolean>(false)
   //endregion
@@ -39,9 +39,25 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
   //region Handle
   const apiGetCategories = (id: string): void => {
     axios
-      .get(`http://127.0.0.1:3001/categories/${id}`)
+      .get(`http://localhost:4000/categories`)
       .then((res: AxiosResponse) => {
-        setCategories(res.data.categories)
+        setCategory(res.data)
+        setCategories(res.data.other_category)
+        setSuperCategoryId(res.data.super_category_id)
+        setKanjis(res.data.word_list)
+      })
+      // eslint-disable-next-line @typescript-eslint/typedef
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const apiGetCategoriesWithId = (id: string): void => {
+    axios
+      .get(`http://localhost:4000/categories/${id}`)
+      .then((res: AxiosResponse) => {
+        setCategory(res.data)
+        setCategories(res.data.other_category)
         setSuperCategoryId(res.data.super_category_id)
         setKanjis(res.data.word_list)
       })
@@ -63,13 +79,13 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
   //endregion
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
+    <Grid container component="main" sx={{ height: "100vh", width: "100%" }}>
       <Grid item xs={12} sm={8} md={4} component={Paper} elevation={2} square>
         <Box sx={boxCategoriesStyle}>
           <Icon sx={iconStyle} onClick={handleBack}>
             arrow_back
           </Icon>
-          <Typography variant={"h4"}>Animaux</Typography>
+          <Typography variant={"h4"}>{category != null ? category.name : "Loading"}</Typography>
         </Box>
         <Box>
           <Box sx={{ padding: 3 }}>
@@ -78,16 +94,16 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
                 category={category}
                 key={category.id}
                 onClick={(): void => {
-                  apiGetCategories(category.id)
+                  apiGetCategoriesWithId(category.id)
                 }}
               />
             ))}
-            {kanjis?.map((kanji: IWord) => (
+            {kanjis?.map((kanji: IWordList) => (
               <KanjiCard
-                kanji={kanji}
-                key={kanji.id}
+                kanji={kanji.word}
+                key={kanji.word.id}
                 onClick={(): void => {
-                  setKanji(kanji)
+                  setKanji(kanji.word)
                 }}
               />
             ))}
@@ -100,7 +116,7 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
       <Grid item xs={12} sm={8} md={8} component={Paper} square sx={gridKanjiDetail}>
         <KanjiDetailCard kanji={kanji} />
       </Grid>
-      <CreateCategoryForm isOpen={popupIsOpen} />
+      <CreateCategoryForm isOpen={popupIsOpen} superId={category?.id} />
     </Grid>
   )
 }

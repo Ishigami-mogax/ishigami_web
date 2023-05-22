@@ -43,7 +43,7 @@ const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
           <NavItem value={profileItem} />
         </Box>
       </Box>
-      <Box>{children}</Box>
+      <Box sx={{ width: "100%" }}>{children}</Box>
     </>
   )
 }

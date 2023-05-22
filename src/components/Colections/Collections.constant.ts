@@ -5,8 +5,24 @@ export interface ICategory {
   name: string
   level: number
   super_category_id: string
-  percent: number
+  percent: { word_list: number }
   _count: { word_list: number }
+}
+
+export interface IWordList {
+  word: {
+    id: string
+    kanji: string
+    signification: string
+    description: string
+    lines: number
+    jlpt: string
+    reading: Array<{
+      reading: string
+      id: string
+      isOnyumi: boolean
+    }>
+  }
 }
 
 export interface IWord {

@@ -35,7 +35,7 @@ const CategoryCard: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChi
             <Typography variant={"h5"}>{category.name}</Typography>
           </Box>
           <Box sx={percentStyle}>
-            <Typography variant={"h5"}>{category.percent}%</Typography>
+            <Typography variant={"h5"}>{category.percent.word_list}%</Typography>
             <Icon>play_arrow</Icon>
           </Box>
         </Box>

@@ -46,7 +46,7 @@ const KanjiCard: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildr
               {kanji.kanji}
             </Typography>
             <Box>
-              {kanji.reading.map((reading: IReading) => (
+              {kanji.reading.slice(0, 2).map((reading: IReading) => (
                 <Typography variant={"body1"} key={reading.id}>
                   {reading.reading}
                 </Typography>

@@ -1,10 +1,7 @@
+import { type ICategory } from "../Collections.constant"
+
 export interface PropsInterface {
-  category: {
-    _count: { word_list: number }
-    name: string
-    id: string
-    percent: number
-  }
+  category: ICategory
   onClick: () => void
 }
 

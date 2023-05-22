@@ -1,4 +1,4 @@
 export interface PropsInterface {
   isOpen: boolean
-  // onClick: void;
+  superId?: string
 }
