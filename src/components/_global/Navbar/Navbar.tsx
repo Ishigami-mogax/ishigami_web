@@ -2,14 +2,12 @@ import { type FC, type PropsWithChildren } from "react"
 import { Box } from "@mui/material"
 import { styles } from "./Navbar.style"
 import { type IItemMenu, itemMenu, profileItem, type PropsInterface } from "./Navbar.constant"
-import { useTranslation } from "react-i18next"
 import NavItem from "./NavItem/NavItem"
 
 const Navbar: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   // region Default
   const { navbarStyle, imageStyle, principalItems, profileItemStyle } = styles
   const { children } = props
-  const { t } = useTranslation()
   // endregion
 
   // region Context
