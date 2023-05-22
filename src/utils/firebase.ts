@@ -50,7 +50,8 @@ export const firebaseSetup = () => {
 
       await axios.post(process.env.REACT_APP_API_URL + "/register", {
         id: user.uid,
-        email: user.email
+        email: user.email,
+
       })
     } else {
       // console.log("No User")

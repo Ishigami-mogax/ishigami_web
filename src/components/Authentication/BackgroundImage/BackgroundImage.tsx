@@ -1,7 +1,5 @@
 import type { FC, PropsWithChildren } from "react"
 import type { PropsInterface } from "./BackgroundImage.constant"
-import { styles } from "./BackgroundImage.style"
-import { useTranslation } from "react-i18next"
 import { Grid } from "@mui/material"
 import { images } from "./BackgroundImage.constant"
 
@@ -9,9 +7,6 @@ const BackgroundImage: FC<PropsWithChildren<PropsInterface>> = (
   props: PropsWithChildren<PropsInterface>
 ): JSX.Element => {
   //region Default
-  const {} = styles
-  const {} = props
-  const { t } = useTranslation()
   //endregion
 
   //region Context

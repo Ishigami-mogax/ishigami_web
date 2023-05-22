@@ -1,16 +1,12 @@
-import React, { type FC, type PropsWithChildren, useState } from "react"
+import React, { type FC, type PropsWithChildren } from "react"
 import { CssBaseline, Grid } from "@mui/material"
 import type { PropsInterface } from "./Authentication.constant"
-import { useTranslation } from "react-i18next"
-import { styles } from "./Authentication.style"
 import BackgroundImage from "./BackgroundImage/BackgroundImage"
-import SignUpForm from "./AuthenticationForm/AuthenticationForm"
+import AuthenticationForm from "./AuthenticationForm/AuthenticationForm"
 
 const Authentication: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   //region Default
-  const {} = styles
   const { sign } = props
-  const { t } = useTranslation()
   //endregion
 
   //region Context
@@ -20,7 +16,6 @@ const Authentication: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithC
   //endregion
 
   //region UseState
-  const [isSignup, setIsSignUp] = useState(sign)
   //endregion
 
   //region UseEffect
@@ -34,7 +29,7 @@ const Authentication: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithC
     <Grid container component="main" sx={{ height: "100vh" }}>
       <CssBaseline />
       <BackgroundImage />
-      <SignUpForm signUp={sign} />
+      <AuthenticationForm signUp={sign} />
     </Grid>
   )
 }

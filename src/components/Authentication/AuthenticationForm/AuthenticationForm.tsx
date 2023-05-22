@@ -1,7 +1,6 @@
 import React, { type FC, type PropsWithChildren, useState } from "react"
 import type { PropsInterface } from "./AuthenticationForm.constant"
 import { styles } from "./AuthenticationForm.style"
-import { useTranslation } from "react-i18next"
 import { Box, Divider, Grid, Link, Paper, Typography } from "@mui/material"
 import FormInput from "../../_input/FormInput/FormInput"
 import ButtonGlobal from "../../_input/Button/Button"
@@ -11,7 +10,6 @@ const AuthenticationForm: FC<PropsWithChildren<PropsInterface>> = (props: PropsW
   // region Default
   const { boxStyle, dividerStyle, existingAccount, existingAccountLink } = styles
   const { signUp } = props
-  const { } = useTranslation()
   // endregion
 
   // region Context
@@ -126,9 +124,9 @@ const AuthenticationForm: FC<PropsWithChildren<PropsInterface>> = (props: PropsW
             avec Google
           </ButtonGlobal>
           <Box sx={existingAccount}>
-            <Typography component="p">Vous avez déjà un compte ?</Typography>
+            <Typography component="p">{isSignup ? "Vous avez déjà un compte ?" : "Vous n’avez pas de compte ?"}</Typography>
             <Link variant="body2" sx={existingAccountLink} onClick={handleSwitchConnection}>
-              Connectez-vous !
+              {isSignup ? "Connectez-vous !" : "Créer un compte"}
             </Link>
           </Box>
         </Box>
