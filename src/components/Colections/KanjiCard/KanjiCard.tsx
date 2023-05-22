@@ -1,15 +1,12 @@
 import { type FC, type PropsWithChildren } from "react"
-import { type PropsInterface } from "./KanjiCard.constant"
+import { type IReading, type PropsInterface } from "./KanjiCard.constant"
 import { styles } from "./KanjiCard.style"
 import { Box, Paper, Typography } from "@mui/material"
 import Icon from "@mui/material/Icon"
 
-const KanjiCard: FC<PropsWithChildren<PropsInterface>> = (
-  props: PropsWithChildren<PropsInterface>
-): JSX.Element => {
+const KanjiCard: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   //region Default
-  const { paperStyle, boxStyle, boxSignification, leftColor, volumeStyle } =
-    styles
+  const { paperStyle, boxStyle, boxSignification, leftColor, volumeStyle } = styles
   const { kanji, onClick } = props
   //endregion
 
@@ -35,7 +32,9 @@ const KanjiCard: FC<PropsWithChildren<PropsInterface>> = (
         elevation={2}
         square
         sx={paperStyle}
-        onClick={(): void => { onClick() }}
+        onClick={(): void => {
+          onClick()
+        }}
       >
         <Box sx={boxStyle}>
           <Box sx={boxSignification}>
@@ -47,7 +46,7 @@ const KanjiCard: FC<PropsWithChildren<PropsInterface>> = (
               {kanji.kanji}
             </Typography>
             <Box>
-              {kanji.reading.map((reading: any) => (
+              {kanji.reading.map((reading: IReading) => (
                 <Typography variant={"body1"} key={reading.id}>
                   {reading.reading}
                 </Typography>

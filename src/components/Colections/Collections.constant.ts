@@ -1,5 +1,28 @@
 export interface PropsInterface {}
 
+export interface ICategory {
+  id: string
+  name: string
+  level: number
+  super_category_id: string
+  percent: number
+  _count: { word_list: number }
+}
+
+export interface IWord {
+  id: string
+  kanji: string
+  signification: string
+  description: string
+  lines: number
+  jlpt: string
+  reading: Array<{
+    reading: string
+    id: string
+    isOnyumi: boolean
+  }>
+}
+
 export const categories: Array<{
   _count: { word_list: number }
   name: string

@@ -1,5 +1,5 @@
-import { type FC, type PropsWithChildren, useState } from "react"
-import { categories, kanjis, type PropsInterface } from "./Collections.constant"
+import { type FC, type PropsWithChildren, useEffect, useState } from "react"
+import { type ICategory, type IWord, type PropsInterface } from "./Collections.constant"
 import { styles } from "./Collections.style"
 import { Box, Grid, Paper, Typography } from "@mui/material"
 import Icon from "@mui/material/Icon"
@@ -8,6 +8,7 @@ import KanjiCard from "./KanjiCard/KanjiCard"
 import ButtonGlobal from "../_input/Button/Button"
 import KanjiDetailCard from "./KanjiDetailCard/KanjiDetailCard"
 import CreateCategoryForm from "./CreateCategoryForm/CreateCategoryForm"
+import axios, { type AxiosResponse } from "axios"
 
 const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   //region Default
@@ -21,42 +22,44 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
   //endregion
 
   //region UseState
-  // const [categories, setCategories] = useState([]);
-  // const [superCategoryId, setSuperCategoryId] = useState("");
-  // const [kanjis, setKanjis] = useState([]);
-  const [kanji, setKanji] = useState({})
-  const [popupIsOpen, setPopupIsOpen] = useState(false)
+  const [categories, setCategories] = useState<ICategory[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [superCategoryId, setSuperCategoryId] = useState<string>("")
+  const [kanjis, setKanjis] = useState<IWord[]>([])
+  const [kanji, setKanji] = useState<IWord>()
+  const [popupIsOpen, setPopupIsOpen] = useState<boolean>(false)
   //endregion
 
   //region UseEffect
-  // useEffect(() => {
-  //   // axios.get("/categories")
-  //   //   .then((res) => {
-  //   //   setCategories(res.data.categories);
-  //   //   setCategory(res.data.super_category_id);
-  //   //   setKanjis(res.data.word_list);
-  //   // });
-  // }, []);
+  useEffect(() => {
+    apiGetCategories("")
+  }, [])
   //endregion
 
   //region Handle
-  const axiosGetCategories = (id: string) => {
-    // axios.get(`/categories/${id}`).then((res) => {
-    //   setCategories(res.data.categories);
-    //   setSuperCategory(res.data.super_category_id);
-    //   setKanjis(res.data.word_list);
-    // }).catch((error) => console.log(error));
+  const apiGetCategories = (id: string): void => {
+    axios
+      .get(`http://127.0.0.1:3001/categories/${id}`)
+      .then((res: AxiosResponse) => {
+        setCategories(res.data.categories)
+        setSuperCategoryId(res.data.super_category_id)
+        setKanjis(res.data.word_list)
+      })
+      // eslint-disable-next-line @typescript-eslint/typedef
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
-  const handleBack = () => {
-    //   axiosGetCategories(superCategory)
+  const handleBack = (): void => {
+    apiGetCategories(superCategoryId)
   }
 
   const handleOpenCreateForm = (): void => {
     setPopupIsOpen((isOpen: boolean): boolean => !isOpen)
   }
 
-  const handleCreateCategory = () => {}
+  // const handleCreateCategory = () => {}
   //endregion
 
   return (
@@ -70,26 +73,24 @@ const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element 
         </Box>
         <Box>
           <Box sx={{ padding: 3 }}>
-            {categories &&
-              categories.map((category) => (
-                <CategoryCard
-                  category={category}
-                  key={category.id}
-                  onClick={(): void => {
-                    axiosGetCategories(category.id)
-                  }}
-                />
-              ))}
-            {kanjis &&
-              kanjis.map((kanji) => (
-                <KanjiCard
-                  kanji={kanji}
-                  key={kanji.id}
-                  onClick={(): void => {
-                    setKanji(kanji)
-                  }}
-                />
-              ))}
+            {categories?.map((category: ICategory) => (
+              <CategoryCard
+                category={category}
+                key={category.id}
+                onClick={(): void => {
+                  apiGetCategories(category.id)
+                }}
+              />
+            ))}
+            {kanjis?.map((kanji: IWord) => (
+              <KanjiCard
+                kanji={kanji}
+                key={kanji.id}
+                onClick={(): void => {
+                  setKanji(kanji)
+                }}
+              />
+            ))}
             <Box sx={{ padding: 5 }}>
               <ButtonGlobal onClick={handleOpenCreateForm}>Créer une catégorie</ButtonGlobal>
             </Box>

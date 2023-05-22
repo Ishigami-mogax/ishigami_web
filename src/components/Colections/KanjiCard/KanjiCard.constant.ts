@@ -10,6 +10,12 @@ export interface PropsInterface {
   onClick: () => void
 }
 
+export interface IReading {
+  reading: string
+  id: string
+  isOnyumi: boolean
+}
+
 export const kanjis: Array<{
   kanji: string
   reading: Array<{ reading: string, id: string, isOnyumi: boolean }>

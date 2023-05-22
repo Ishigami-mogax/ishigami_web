@@ -1,4 +1,5 @@
-export interface PropsInterface {
+import { type IWord } from "../Collections.constant"
 
-  kanji?: any
+export interface PropsInterface {
+  kanji?: IWord
 }

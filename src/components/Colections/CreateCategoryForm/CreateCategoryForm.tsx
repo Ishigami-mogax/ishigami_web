@@ -1,4 +1,4 @@
-import { type FC, type PropsWithChildren, useState } from "react"
+import { type ChangeEvent, type FC, type PropsWithChildren, useState } from "react"
 import { type PropsInterface } from "./CreateCategoryForm.constant"
 import { styles } from "./CreateCategoryForm.style"
 import { Box, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material"
@@ -19,6 +19,7 @@ const CreateCategoryForm: FC<PropsWithChildren<PropsInterface>> = (
   //endregion
 
   //region UseState
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [categoryName, setCategoryName] = useState("")
   //endregion
 
@@ -41,7 +42,7 @@ const CreateCategoryForm: FC<PropsWithChildren<PropsInterface>> = (
           label={"Catégorie"}
           name={"name"}
           autoComplete={"name"}
-          onChange={(e) => {
+          onChange={(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
             setCategoryName(e.target.value)
           }}
         />

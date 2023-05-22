@@ -3,6 +3,7 @@ import { type PropsInterface } from "./KanjiDetailCard.constant"
 import { styles } from "./KanjiDetailCard.style"
 import { Box, Grid, Paper, Typography } from "@mui/material"
 import Icon from "@mui/material/Icon"
+import { type IReading } from "../KanjiCard/KanjiCard.constant"
 
 const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
   props: PropsWithChildren<PropsInterface>
@@ -38,7 +39,7 @@ const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
 
   return (
     <Grid item xs={12} sm={8} md={12} component={Paper} elevation={6} square sx={{ display: "flex" }}>
-      {kanji
+      {kanji != null
         ? (
         <>
           <Grid item xs={12} sm={8} md={6} component={Box} sx={{ height: "100vh" }}>
@@ -61,20 +62,19 @@ const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
                 <Box sx={{}}>
                   <Typography variant={"h5"}>Lectures :</Typography>
                   <Box sx={manyItemsStyle}>
-                    {kanji.reading &&
-                      kanji.reading.map((read: any) =>
-                        read.isOnyumi
-                          ? (
-                          <Typography variant={"h5"} key={read.id}>
-                            On : {read.reading}
-                          </Typography>
-                            )
-                          : (
-                          <Typography variant={"h5"} key={read.id}>
-                            Kun : {read.reading}
-                          </Typography>
-                            )
-                      )}
+                    {kanji.reading?.map((read: IReading) =>
+                      read.isOnyumi
+                        ? (
+                        <Typography variant={"h5"} key={read.id}>
+                          On : {read.reading}
+                        </Typography>
+                          )
+                        : (
+                        <Typography variant={"h5"} key={read.id}>
+                          Kun : {read.reading}
+                        </Typography>
+                          )
+                    )}
                   </Box>
                 </Box>
               </Box>
