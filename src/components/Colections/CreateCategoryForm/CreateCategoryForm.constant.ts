@@ -1,4 +1,4 @@
 export interface PropsInterface {
-  isOpen: boolean;
+  isOpen: boolean
   // onClick: void;
 }

@@ -1,27 +1,15 @@
-import { FC, PropsWithChildren, useState } from "react";
-import { PropsInterface } from "./CreateCategoryForm.constant";
-import { styles } from "./CreateCategoryForm.style";
-import { useTranslation } from "react-i18next";
-import {
-  Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
-import Icon from "@mui/material/Icon";
-import Buttons from "../../_input/Button/Button";
+import { type FC, type PropsWithChildren, useState } from "react"
+import { type PropsInterface } from "./CreateCategoryForm.constant"
+import { styles } from "./CreateCategoryForm.style"
+import { Box, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material"
+import ButtonGlobal from "../../_input/Button/Button"
 
 const CreateCategoryForm: FC<PropsWithChildren<PropsInterface>> = (
   props: PropsWithChildren<PropsInterface>
 ): JSX.Element => {
   //region Default
-  const {} = styles;
-  const { isOpen } = props;
-  const { t } = useTranslation();
+  const {} = styles
+  const { isOpen } = props
   //endregion
 
   //region Context
@@ -31,7 +19,7 @@ const CreateCategoryForm: FC<PropsWithChildren<PropsInterface>> = (
   //endregion
 
   //region UseState
-  const [categoryName, setCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState("")
   //endregion
 
   //region UseEffect
@@ -53,45 +41,16 @@ const CreateCategoryForm: FC<PropsWithChildren<PropsInterface>> = (
           label={"Catégorie"}
           name={"name"}
           autoComplete={"name"}
-          onChange={(e) => setCategoryName(e.target.value)}
+          onChange={(e) => {
+            setCategoryName(e.target.value)
+          }}
         />
       </DialogContent>
       <DialogActions>
-        <Buttons text={"Créer la catégorie"} onClick={() => {}} />
+        <ButtonGlobal onClick={() => {}}>Créer la catégorie</ButtonGlobal>
       </DialogActions>
     </Dialog>
-    // <Paper
-    //   elevation={6}
-    //   square
-    //   sx={{
-    //     width: "40%",
-    //     height: "30%",
-    //     position: "absolute",
-    //     top: "30%",
-    //     left: "30%",
-    //     borderRadius: 5,
-    //   }}
-    // >
-    //   <Box
-    //     sx={{
-    //       padding: 5,
-    //       display: "flex",
-    //       flexDirection: "column",
-    //       alignItems: "center",
-    //     }}
-    //   >
-    //     <Typography variant={"h4"}>Nouvelle Catégorie</Typography>
-    //     <TextField
-    //       type={"type"}
-    //       id={"id"}
-    //       label={"label"}
-    //       name={"name"}
-    //       autoComplete={"name"}
-    //     />
-    //     <Buttons text={"Créer la catégorie"} onClick={} />
-    //   </Box>
-    // </Paper>
-  );
-};
+  )
+}
 
-export default CreateCategoryForm;
+export default CreateCategoryForm

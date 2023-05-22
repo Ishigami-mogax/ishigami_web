@@ -1,23 +1,17 @@
-import { FC, PropsWithChildren, useContext, useEffect, useState } from "react";
-import { categories, kanjis, PropsInterface } from "./Collections.constant";
-import { styles } from "./Collections.style";
-import { useTranslation } from "react-i18next";
-import { Box, Grid, Paper, Typography } from "@mui/material";
-import Icon from "@mui/material/Icon";
-import CategoryCard from "./CategoryCard/CategoryCard";
-import KanjiCard from "./KanjiCard/KanjiCard";
-import Buttons from "../_input/Button/Button";
-import KanjiDetailCard from "./KanjiDetailCard/KanjiDetailCard";
-import axios from "axios";
-import CreateCategoryForm from "./CreateCategoryForm/CreateCategoryForm";
+import { type FC, type PropsWithChildren, useState } from "react"
+import { categories, kanjis, type PropsInterface } from "./Collections.constant"
+import { styles } from "./Collections.style"
+import { Box, Grid, Paper, Typography } from "@mui/material"
+import Icon from "@mui/material/Icon"
+import CategoryCard from "./CategoryCard/CategoryCard"
+import KanjiCard from "./KanjiCard/KanjiCard"
+import ButtonGlobal from "../_input/Button/Button"
+import KanjiDetailCard from "./KanjiDetailCard/KanjiDetailCard"
+import CreateCategoryForm from "./CreateCategoryForm/CreateCategoryForm"
 
-const Collections: FC = (
-  props: PropsWithChildren<PropsInterface>
-): JSX.Element => {
+const Collections: FC = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   //region Default
-  const { boxCategoriesStyle, iconStyle, gridKanjiDetail } = styles;
-  const {} = props;
-  const { t } = useTranslation();
+  const { boxCategoriesStyle, iconStyle, gridKanjiDetail } = styles
   //endregion
 
   //region Context
@@ -30,8 +24,8 @@ const Collections: FC = (
   // const [categories, setCategories] = useState([]);
   // const [superCategoryId, setSuperCategoryId] = useState("");
   // const [kanjis, setKanjis] = useState([]);
-  const [kanji, setKanji] = useState({});
-  const [popupIsOpen, setPopupIsOpen] = useState(false);
+  const [kanji, setKanji] = useState({})
+  const [popupIsOpen, setPopupIsOpen] = useState(false)
   //endregion
 
   //region UseEffect
@@ -52,16 +46,17 @@ const Collections: FC = (
     //   setSuperCategory(res.data.super_category_id);
     //   setKanjis(res.data.word_list);
     // }).catch((error) => console.log(error));
-  };
+  }
 
   const handleBack = () => {
     //   axiosGetCategories(superCategory)
-  };
+  }
 
-  const handleOpenCreateForm = (): void =>
-    setPopupIsOpen((isOpen: boolean): boolean => !isOpen);
+  const handleOpenCreateForm = (): void => {
+    setPopupIsOpen((isOpen: boolean): boolean => !isOpen)
+  }
 
-  const handleCreateCategory = () => {};
+  const handleCreateCategory = () => {}
   //endregion
 
   return (
@@ -79,39 +74,34 @@ const Collections: FC = (
               categories.map((category) => (
                 <CategoryCard
                   category={category}
-                  onClick={(): void => axiosGetCategories(category.id)}
+                  key={category.id}
+                  onClick={(): void => {
+                    axiosGetCategories(category.id)
+                  }}
                 />
               ))}
             {kanjis &&
               kanjis.map((kanji) => (
                 <KanjiCard
                   kanji={kanji}
-                  onClick={(): void => setKanji(kanji)}
+                  key={kanji.id}
+                  onClick={(): void => {
+                    setKanji(kanji)
+                  }}
                 />
               ))}
             <Box sx={{ padding: 5 }}>
-              <Buttons
-                text={"Créer une catégorie"}
-                onClick={handleOpenCreateForm}
-              />
+              <ButtonGlobal onClick={handleOpenCreateForm}>Créer une catégorie</ButtonGlobal>
             </Box>
           </Box>
         </Box>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        sm={8}
-        md={8}
-        component={Paper}
-        square
-        sx={gridKanjiDetail}
-      >
+      <Grid item xs={12} sm={8} md={8} component={Paper} square sx={gridKanjiDetail}>
         <KanjiDetailCard kanji={kanji} />
       </Grid>
       <CreateCategoryForm isOpen={popupIsOpen} />
     </Grid>
-  );
-};
+  )
+}
 
-export default Collections;
+export default Collections

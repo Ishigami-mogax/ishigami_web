@@ -3,14 +3,14 @@ export const styles = {
     display: "flex",
     alignItems: "center",
     marginTop: 3,
-    marginLeft: 3,
+    marginLeft: 3
   },
   iconStyle: {
     fontSize: "xx-large",
     width: 50,
-    cursor: "pointer",
+    cursor: "pointer"
   },
   gridKanjiDetail: {
-    display: "flex",
-  },
-};
+    display: "flex"
+  }
+}

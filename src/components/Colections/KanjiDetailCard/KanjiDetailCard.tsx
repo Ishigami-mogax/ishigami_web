@@ -1,9 +1,8 @@
-import { FC, PropsWithChildren } from "react";
-import { PropsInterface } from "./KanjiDetailCard.constant";
-import { styles } from "./KanjiDetailCard.style";
-import { useTranslation } from "react-i18next";
-import { Box, Grid, Paper, Typography } from "@mui/material";
-import Icon from "@mui/material/Icon";
+import { type FC, type PropsWithChildren } from "react"
+import { type PropsInterface } from "./KanjiDetailCard.constant"
+import { styles } from "./KanjiDetailCard.style"
+import { Box, Grid, Paper, Typography } from "@mui/material"
+import Icon from "@mui/material/Icon"
 
 const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
   props: PropsWithChildren<PropsInterface>
@@ -15,10 +14,9 @@ const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
     iconVolumeStyle,
     manyItemsStyle,
     descriptionStyle,
-    vocabularyStyle,
-  } = styles;
-  const { kanji } = props;
-  const { t } = useTranslation();
+    vocabularyStyle
+  } = styles
+  const { kanji } = props
   //endregion
 
   //region Context
@@ -39,26 +37,11 @@ const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
   //endregion
 
   return (
-    <Grid
-      item
-      xs={12}
-      sm={8}
-      md={12}
-      component={Paper}
-      elevation={6}
-      square
-      sx={{ display: "flex" }}
-    >
-      {kanji ? (
+    <Grid item xs={12} sm={8} md={12} component={Paper} elevation={6} square sx={{ display: "flex" }}>
+      {kanji
+        ? (
         <>
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={6}
-            component={Box}
-            sx={{ height: "100vh" }}
-          >
+          <Grid item xs={12} sm={8} md={6} component={Box} sx={{ height: "100vh" }}>
             <Paper elevation={6} square sx={kanjiPrincipalDetailCard}>
               <Box sx={{ padding: 5 }}>
                 <Box>
@@ -80,29 +63,24 @@ const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
                   <Box sx={manyItemsStyle}>
                     {kanji.reading &&
                       kanji.reading.map((read: any) =>
-                        read.isOnyumi ? (
-                          <Typography variant={"h5"}>
+                        read.isOnyumi
+                          ? (
+                          <Typography variant={"h5"} key={read.id}>
                             On : {read.reading}
                           </Typography>
-                        ) : (
-                          <Typography variant={"h5"}>
+                            )
+                          : (
+                          <Typography variant={"h5"} key={read.id}>
                             Kun : {read.reading}
                           </Typography>
-                        )
+                            )
                       )}
                   </Box>
                 </Box>
               </Box>
             </Paper>
           </Grid>
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={6}
-            component={Box}
-            sx={{ height: "100vh" }}
-          >
+          <Grid item xs={12} sm={8} md={6} component={Box} sx={{ height: "100vh" }}>
             <Paper elevation={6} square sx={descriptionStyle}>
               <Box sx={{ padding: 1 }}>
                 <Typography variant={"h5"}>Description :</Typography>
@@ -117,11 +95,12 @@ const KanjiDetailCard: FC<PropsWithChildren<PropsInterface>> = (
             </Paper>
           </Grid>
         </>
-      ) : (
+          )
+        : (
         <Typography>Veuillez choisir un kanji</Typography>
-      )}
+          )}
     </Grid>
-  );
-};
+  )
+}
 
-export default KanjiDetailCard;
+export default KanjiDetailCard
