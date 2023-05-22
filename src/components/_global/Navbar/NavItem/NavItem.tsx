@@ -2,7 +2,6 @@ import { type FC, type PropsWithChildren } from "react"
 import { Box, Typography } from "@mui/material"
 import { styles } from "./NavItem.style"
 import { type ISelectedItemStyle, type PropsInterface } from "./NavItem.constant"
-import { useTranslation } from "react-i18next"
 import Icon from "@mui/material/Icon"
 import { NavLink } from "react-router-dom"
 import { type IIsActive } from "../Navbar.constant"
@@ -13,7 +12,6 @@ const NavItem: FC<PropsInterface> = (props: PropsWithChildren<PropsInterface>): 
   const {
     value: { icon, title, navigation }
   } = props
-  const { t } = useTranslation()
   // endregion
 
   // region Context

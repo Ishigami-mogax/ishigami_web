@@ -1,15 +1,13 @@
 import { type FC, type PropsWithChildren } from "react"
 import { type PropsInterface } from "./Button.constant"
 import { styles } from "./Button.style"
-import { useTranslation } from "react-i18next"
-import { Button } from "@mui/material"
+import { Box, Button } from "@mui/material"
 import Icon from "@mui/material/Icon"
 
-const Buttons: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+const ButtonGlobal: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   // region Default
-  const { buttonStyle } = styles
-  const { text, icon, onClick } = props
-  const { t } = useTranslation()
+  const { buttonStyle, imageStyle } = styles
+  const { children, type, image, icon, onClick } = props
   // endregion
 
   // region Context
@@ -29,11 +27,14 @@ const Buttons: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren
   // endregion
 
   return (
-    <Button variant="contained" sx={buttonStyle} type={"submit"} onClick={onClick}>
-      {icon !== null && <Icon>{icon}</Icon>}
-      {t(text)}
-    </Button>
+        <Button variant="contained" fullWidth sx={buttonStyle} type={type} onClick={onClick}>
+            {image !== "" && <Box sx={{ width: '30px' }}>
+                <img src={image} alt={image} style={imageStyle}/>
+            </Box>}
+            {icon !== "" && <Icon>{icon}</Icon>}
+            {children}
+        </Button>
   )
 }
 
-export default Buttons
+export default ButtonGlobal

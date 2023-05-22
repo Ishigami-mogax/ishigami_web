@@ -5,23 +5,21 @@ export const styles = {
     alignItems: "space-between",
     height: "100%",
     width: 96,
-    borderRight: "1px solid #cbcbcb",
+    borderRight: "1px solid #cbcbcb"
   },
   imageStyle: {
     width: "70px",
     margin: "auto",
-    marginTop: 2,
+    marginTop: 2
   },
   principalItems: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    margin: "auto",
-    // marginTop: "100%"
+    margin: "auto"
   },
   profileItemStyle: {
     marginBottom: 1,
-    height: "auto",
-    // marginTop: "100%"
-  },
-};
+    height: "auto"
+  }
+}
