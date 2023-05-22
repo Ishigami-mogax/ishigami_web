@@ -5,26 +5,26 @@ import { Box, Button } from "@mui/material"
 import Icon from "@mui/material/Icon"
 
 const ButtonGlobal: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
-  //region Default
+  // region Default
   const { buttonStyle, imageStyle } = styles
   const { children, type, image, icon, onClick } = props
-  //endregion
+  // endregion
 
-  //region Context
-  //endregion
+  // region Context
+  // endregion
 
-  //region Route
-  //endregion
+  // region Route
+  // endregion
 
-  //region UseState
-  //endregion
+  // region UseState
+  // endregion
 
-  //region UseEffect
+  // region UseEffect
 
-  //endregion
+  // endregion
 
-  //region Handle
-  //endregion
+  // region Handle
+  // endregion
 
   return (
         <Button variant="contained" fullWidth sx={buttonStyle} type={type} onClick={onClick}>

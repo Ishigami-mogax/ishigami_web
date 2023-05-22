@@ -6,26 +6,26 @@ import VisibilityIcon from "@mui/icons-material/Visibility"
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
 
 const FormInput: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
-  //region Default
+  // region Default
   const {} = styles
   const { id, label, name, type, onChange, handleShowPassword } = props
-  //endregion
+  // endregion
 
-  //region Context
-  //endregion
+  // region Context
+  // endregion
 
-  //region Route
-  //endregion
+  // region Route
+  // endregion
 
-  //region UseState
-  //endregion
+  // region UseState
+  // endregion
 
-  //region UseEffect
+  // region UseEffect
 
-  //endregion
+  // endregion
 
-  //region Handle
-  //endregion
+  // region Handle
+  // endregion
 
   return (
     <TextField

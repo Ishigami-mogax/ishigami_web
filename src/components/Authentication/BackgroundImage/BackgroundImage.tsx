@@ -6,24 +6,24 @@ import { images } from "./BackgroundImage.constant"
 const BackgroundImage: FC<PropsWithChildren<PropsInterface>> = (
   props: PropsWithChildren<PropsInterface>
 ): JSX.Element => {
-  //region Default
-  //endregion
+  // region Default
+  // endregion
 
-  //region Context
-  //endregion
+  // region Context
+  // endregion
 
-  //region Route
-  //endregion
+  // region Route
+  // endregion
 
-  //region UseState
-  //endregion
+  // region UseState
+  // endregion
 
-  //region UseEffect
+  // region UseEffect
 
-  //endregion
+  // endregion
 
-  //region Handle
-  //endregion
+  // region Handle
+  // endregion
 
   return (
     <Grid
