@@ -1,7 +1,6 @@
 import React, { type FC, type PropsWithChildren } from "react"
 import type { PropsInterface } from "./FormInput.constant"
 import { styles } from "../../_example/Example.style"
-import { useTranslation } from "react-i18next"
 import { IconButton, InputAdornment, TextField } from "@mui/material"
 import VisibilityIcon from "@mui/icons-material/Visibility"
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff"
@@ -10,7 +9,6 @@ const FormInput: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildr
   //region Default
   const {} = styles
   const { id, label, name, type, onChange, handleShowPassword } = props
-  const { t } = useTranslation()
   //endregion
 
   //region Context
