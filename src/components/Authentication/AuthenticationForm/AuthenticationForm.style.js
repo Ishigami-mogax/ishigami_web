@@ -7,7 +7,7 @@ export const styles = {
     alignItems: 'center'
   },
   dividerStyle: {
-    borderColor: "#000",
+    borderColor: "#000000",
     height: 5,
     width: "75%",
     margin: "10px auto"

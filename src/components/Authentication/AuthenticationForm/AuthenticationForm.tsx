@@ -19,12 +19,12 @@ const AuthenticationForm: FC<PropsWithChildren<PropsInterface>> = (props: PropsW
   // endregion
 
   // region UseState
-  const [isSignup, setIsSignUp] = useState(signUp)
+  const [isSignup, setIsSignUp] = useState<boolean>(signUp)
   // const [pseudo, setPseudo] = useState<string>("")
   const [email, setEmail] = useState<string>("")
   const [password, setPassword] = useState<string>("")
   const [confirmPassword, setConfirmPassword] = useState<string>("")
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
   // endregion
 
   // region UseEffect
