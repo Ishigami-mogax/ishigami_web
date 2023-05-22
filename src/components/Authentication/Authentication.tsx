@@ -1,12 +1,12 @@
 import React, { type FC, type PropsWithChildren, useState } from "react"
 import { CssBaseline, Grid } from "@mui/material"
-import type { PropsInterface } from "./SignUp.constant"
+import type { PropsInterface } from "./Authentication.constant"
 import { useTranslation } from "react-i18next"
-import { styles } from "./SignUp.style"
+import { styles } from "./Authentication.style"
 import BackgroundImage from "./BackgroundImage/BackgroundImage"
-import SignUpForm from "./SignUpForm/SignUpForm"
+import SignUpForm from "./AuthenticationForm/AuthenticationForm"
 
-const SignUp: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+const Authentication: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   //region Default
   const {} = styles
   const { sign } = props
@@ -39,4 +39,4 @@ const SignUp: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<
   )
 }
 
-export default SignUp
+export default Authentication

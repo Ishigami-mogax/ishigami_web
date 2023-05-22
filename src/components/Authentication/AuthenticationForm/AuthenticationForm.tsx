@@ -1,13 +1,13 @@
 import React, { type FC, type PropsWithChildren, useState } from "react"
-import type { PropsInterface } from "./SignUpForm.constant"
-import { styles } from "./SignUpForm.style"
+import type { PropsInterface } from "./AuthenticationForm.constant"
+import { styles } from "./AuthenticationForm.style"
 import { useTranslation } from "react-i18next"
 import { Box, Divider, Grid, Link, Paper, Typography } from "@mui/material"
 import FormInput from "../../_input/FormInput/FormInput"
 import ButtonGlobal from "../../_input/Button/Button"
 import { logInWithEmailAndPassword, registerWithEmailAndPassword, signInWithGoogle } from "../../../utils/firebase"
 
-const SignUpForm: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
+const AuthenticationForm: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChildren<PropsInterface>): JSX.Element => {
   // region Default
   const { boxStyle, dividerStyle, existingAccount, existingAccountLink } = styles
   const { signUp } = props
@@ -137,4 +137,4 @@ const SignUpForm: FC<PropsWithChildren<PropsInterface>> = (props: PropsWithChild
   )
 }
 
-export default SignUpForm
+export default AuthenticationForm
