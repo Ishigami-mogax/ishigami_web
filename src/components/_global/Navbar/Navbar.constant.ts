@@ -11,14 +11,14 @@ export interface IIsActive {
 }
 
 export const itemMenu: IItemMenu[] = [
-  { title: 'Home', icon: 'home', navigation: '/' },
-  { title: 'Collections', icon: 'folder', navigation: '/collections' },
-  { title: 'Stats', icon: 'trending_up', navigation: '/stats' },
-  { title: 'Exercises', icon: 'book', navigation: '/exercises' }
+  { title: "Home", icon: "home", navigation: "/" },
+  { title: "Collections", icon: "folder", navigation: "/collections" },
+  { title: "Stats", icon: "trending_up", navigation: "/stats" },
+  { title: "Exercises", icon: "book", navigation: "/exercises" }
 ]
 
 export const profileItem: IItemMenu = {
-  title: 'Profile',
-  icon: 'account_circle',
-  navigation: '/profile'
+  title: "Profile",
+  icon: "account_circle",
+  navigation: "/profile"
 }

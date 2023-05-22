@@ -4,9 +4,13 @@ export const styles = {
     borderRadius: "8px",
     textTransform: "none",
     fontWeight: "bold",
-    color: "#fff",
+    color: "#FFFFFF",
     "&:hover": {
-      backgroundColor: "#D40909",
-    },
+      backgroundColor: "#D40909"
+    }
   },
-};
+  imageStyle: {
+    width: "inherit",
+    filter: "invert(100%) sepia(0%) saturate(2%) hue-rotate(212deg) brightness(103%) contrast(101%)"
+  }
+}

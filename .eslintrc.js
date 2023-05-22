@@ -8,6 +8,8 @@ module.exports = {
     {
       files: ["*.ts", "*.tsx"],
       rules: {
+        "spaced-comment": "off",
+        "@typescript-eslint/no-misused-promises": "off",
         "@typescript-eslint/quotes": "off",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-empty-interface": "off",

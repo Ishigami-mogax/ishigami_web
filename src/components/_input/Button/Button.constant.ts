@@ -1,7 +1,8 @@
-import { type MouseEventHandler } from 'react'
+import { type MouseEventHandler } from "react"
 
 export interface PropsInterface {
-  text: string
+  type?: "button" | "submit" | "reset"
+  image?: string
   icon?: string
   onClick: MouseEventHandler<HTMLButtonElement>
 }
