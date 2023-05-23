@@ -31,14 +31,6 @@ const PairIt: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithChildren<P
 
     //region UseEffect
     useEffect(() => {
-        axios.get('http://localhost:4000/sessions')
-            .then((res:any) => {
-                setTop([...res.data.firstPair])
-                setBottom([...res.data.secondPair])
-            })
-    }, [])
-
-    useEffect(() => {
         if(right && left) {
 
             if(right == left) {
