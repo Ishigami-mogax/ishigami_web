@@ -3,6 +3,7 @@ import Example from "./components/_example/Example"
 import Navbar from "./components/_global/Navbar/Navbar"
 import Authentication from "./components/Authentication/Authentication"
 import Collections from "./components/Colections/Collections"
+import Session from "./components/Session/Session"
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: <Navbar />
+  },
+  {
+    path: "/session",
+    element: <Session />
   },
   {
     path: "/authentication",
