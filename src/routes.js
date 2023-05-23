@@ -1,39 +1,51 @@
-import { createBrowserRouter } from "react-router-dom";
-import Example from "./components/_example/Example";
-import Navbar from "./components/_global/Navbar/Navbar";
-import Buttons from "./components/_input/Button/Button";
-import MethodCheck from "./components/Session/AdvancementMenu/MethodCheck/MethodCheck";
-import Session from "./components/Session/Session";
+import { createBrowserRouter } from "react-router-dom"
+import Example from "./components/_example/Example"
+import Navbar from "./components/_global/Navbar/Navbar"
+import Authentication from "./components/Authentication/Authentication"
+import Collections from "./components/Colections/Collections"
+import Session from "./components/Session/Session"
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <Navbar></Navbar>
-    },
-    {
-        path: "/collections",
-        element: <Navbar/>
-    },
-    {
-        path: "/stats",
-        element: <Navbar/>
-    },
-    {
-        path: "/exercises",
-        element: <Navbar/>
-    },
-    {
-        path: "/profile",
-        element: <Navbar/>
-    },
-    {
-        path: "/test",
-        element: <Session/>
-    },
-    {
-        path: "*",
-        element: <div>404</div>
-    },
-]);
+  {
+    path: "/",
+    element: <Navbar></Navbar>
+  },
+  {
+    path: "/collections",
+    element: (
+      <Navbar>
+        <Collections />
+      </Navbar>
+    )
+  },
+  {
+    path: "/stats",
+    element: <Navbar />
+  },
+  {
+    path: "/exercises",
+    element: <Navbar />
+  },
+  {
+    path: "/profile",
+    element: <Navbar />
+  },
+  {
+    path: "/session",
+    element: <Session />
+  },
+  {
+    path: "/authentication",
+    element: <Authentication sign={false} />
+  },
+  {
+    path: "/test",
+    element: <Example />
+  },
+  {
+    path: "*",
+    element: <div>404</div>
+  }
+])
 
-export default router;
+export default router

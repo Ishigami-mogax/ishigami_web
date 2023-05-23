@@ -7,20 +7,20 @@ const apiKey = process.env.REACT_APP_I18NEXT_API_KEY
 const loadPath = `https://api.i18nexus.com/project_resources/translations/{{lng}}/{{ns}}.json?api_key=${apiKey}`
 
 i18next
-    .use(HttpBackend)
-    .use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-        fallbackLng: "fr",
+  .use(HttpBackend)
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    fallbackLng: "fr",
 
-        ns: ["default"],
-        defaultNS: "default",
+    ns: ["default"],
+    defaultNS: "default",
 
-        supportedLngs: ["fr"],
-        interpolation: {
-            escapeValue: false
-        },
-        backend: {
-            loadPath: loadPath
-        }
-    })
+    supportedLngs: ["fr"],
+    interpolation: {
+      escapeValue: false
+    },
+    backend: {
+      loadPath
+    }
+  })
