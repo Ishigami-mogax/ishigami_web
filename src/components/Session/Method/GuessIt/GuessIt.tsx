@@ -5,75 +5,26 @@ import {PropsInterface} from "./GuessIt.constant";
 import {useTranslation} from "react-i18next";
 import Button from '../../../_input/Button/Button';
 
-const GuessIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
+const GuessIt: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region Default
     const { itemTypo, cardListElement, cardMain, mainTypo, mainContainer } = styles
-    const {} = props
+    const { guess, callback, handleError } = props
     const { t } = useTranslation()
-    const [listElement, setListElement] = useState([
-        {
-            id:"1",
-            offer:'Chien',
-            toFind:'Inu'
-        },
-        {
-            id:"2",
-            offer:'Chat',
-            toFind:'Neko'
-        },
-        {
-            id:"3",
-            offer:'Cheval',
-            toFind:'Uma'
-        },
-        {
-            id:"4",
-            offer:'Vache',
-            toFind:'Ushi'
-        },
-        {
-            id:"5",
-            offer:'Dromadaire',
-            toFind:'Dakuda'
-        },
-    ])
-    const [listToFind, setListToFind] = useState([
-        {
-            id:"1",
-            offer:'Chien',
-            toFind:'Inu'
-        },
-        {
-            id:"2",
-            offer:'Chat',
-            toFind:'Neko'
-        },
-        {
-            id:"3",
-            offer:'Cheval',
-            toFind:'Uma'
-        },
-        {
-            id:"4",
-            offer:'Vache',
-            toFind:'Ushi'
-        },
-        {
-            id:"5",
-            offer:'Dromadaire',
-            toFind:'Dakuda'
-        },
-    ])
+
     //endregion
 
     //region Context
     //endregion
     //region Route
     //endregion
+
     //region UseState
     const [selected, setSelected] = useState("")
+    const [listElement, setListElement] = useState([...guess])
+    const [listToFind, setListToFind] = useState([...guess])
     //endregion
+
     //region UseEffect
     useEffect(() => {
 
@@ -82,8 +33,19 @@ const GuessIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
                 listToFind.shift()
                 setListToFind([...listToFind])
                 setSelected("")
+
+                if(listToFind.length == 0) {
+                    setListToFind([{
+                        id:"",
+                        offer:'',
+                        toFind:''
+                    }])
+                    callback('Guess It')
+                }
             }, 1000)
 
+        } else if (listToFind[0].id != "") {
+            handleError(listToFind[0].id, 'guessIt')
         }
     }, [selected])
     //endregion
@@ -96,7 +58,7 @@ const GuessIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
                 <CardContent sx={{width:1, display:'flex', alignItems:'center', flexDirection:'column'}}>
                     <Card sx={cardMain}>
                         <CardContent>
-                            <Typography sx={mainTypo}>{listToFind[0].offer}</Typography>
+                            <Typography sx={mainTypo}>{listToFind[0].toFind}</Typography>
                         </CardContent>
                     </Card>
                     <Box sx={{marginTop:5, width:1, display:'flex', flexDirection:'column', alignItems:'center'}}>

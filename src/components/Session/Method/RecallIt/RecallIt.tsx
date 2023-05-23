@@ -7,39 +7,13 @@ import moment from "moment";
 import Button from "../../../_input/Button/Button";
 import {useInterval} from "usehooks-ts";
 
-const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
+const RecallIt: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithChildren<PropsInterface>) : JSX.Element => {
 
     //region Default
     const { cardListElement, cardMain, mainContainer, mainTypo, itemTypo} = styles
-    const {} = props
+    const { recall, callback, handleError } = props
     const { t } = useTranslation()
-    const [listElement, setListElement] = useState([
-        {
-            id:"1",
-            sharp:"Inu",
-            blur:"Chien"
-        },
-        {
-            id:"2",
-            sharp:"Neko",
-            blur:"Chat"
-        },
-        {
-            id:"3",
-            sharp:"Dakuda",
-            blur:"Dromadaire"
-        },
-        {
-            id:"4",
-            sharp:"Ushi",
-            blur:"Vache"
-        },
-        {
-            id:"5",
-            sharp:"Uma",
-            blur:"Cheval"
-        }
-    ])
+    const [listElement, setListElement] = useState([...recall])
 
     //endregion
 
@@ -58,7 +32,6 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
     //region UseEffect
 
     useInterval(() => {
-        console.log(loopTime)
         if(loopTime>=30000){
             setHide(3)
         } else if(hide != 2) {
@@ -76,7 +49,17 @@ const RecallIt: FC = (props:PropsWithChildren<PropsInterface>) : JSX.Element => 
         if (recall) {
             setListElement([...listElement])
         } else {
+            handleError(listElement[0].id, 'recallIt')
             setListElement([...listElement, tempElement])
+        }
+
+        if(listElement.length == 0) {
+            callback('Recall It')
+            setListElement([{
+                id:"1",
+                sharp:"Inu",
+                blur:"Chien"
+            }])
         }
 
         setStartTime(moment())

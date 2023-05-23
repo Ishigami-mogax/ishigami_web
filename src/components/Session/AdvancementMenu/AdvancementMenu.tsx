@@ -46,7 +46,7 @@ const AdvancementMenu: FC<PropsWithChildren<PropsInterface>> = (props:PropsWithC
                 <Typography sx={percentStyle}>70%</Typography>
             </Box>
             {methodList.map((method: { name:string, check:boolean }, index: number) => (
-                <MethodCheck {...method} end={(index+1)===methodList.length}/>
+                <MethodCheck {...method} end={(index+1)===methodList.length} key={index}/>
             ))}
         </Box>
     );
