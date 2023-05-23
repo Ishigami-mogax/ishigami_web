@@ -1,36 +1,46 @@
-import { createBrowserRouter } from "react-router-dom";
-import Example from "./components/_example/Example";
-import Navbar from "./components/_global/Navbar/Navbar";
+import { createBrowserRouter } from "react-router-dom"
+import Example from "./components/_example/Example"
+import Navbar from "./components/_global/Navbar/Navbar"
+import Authentication from "./components/Authentication/Authentication"
+import Collections from "./components/Colections/Collections"
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Navbar></Navbar>,
+    element: <Navbar></Navbar>
   },
   {
     path: "/collections",
-    element: <Navbar />,
+    element: (
+      <Navbar>
+        <Collections />
+      </Navbar>
+    )
   },
   {
     path: "/stats",
-    element: <Navbar />,
+    element: <Navbar />
   },
   {
     path: "/exercises",
-    element: <Navbar />,
+    element: <Navbar />
   },
   {
     path: "/profile",
-    element: <Navbar />,
+    element: <Navbar />
+  },
+  {
+    path: "/authentication",
+    element: <Authentication sign={false} />
   },
   {
     path: "/test",
-    element: <Example />,
+    element: <Example />
   },
   {
     path: "*",
-    element: <div>404</div>,
-  },
-]);
+    element: <div>404</div>
+  }
+])
 
-export default router;
+export default router

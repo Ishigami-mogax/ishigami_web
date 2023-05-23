@@ -9,7 +9,7 @@ export const styles = {
     borderRadius: 20,
     margin: 1,
     textDecoration: "none",
-    color: "#000",
+    color: "#000000"
   },
   defaultStyle: {
     display: "flex",
@@ -20,11 +20,11 @@ export const styles = {
     borderRadius: 20,
     margin: 1,
     textDecoration: "none",
-    color: "#000",
+    color: "#000000"
   },
   boxStyle: {
     display: "flex",
     alignItems: "center",
-    flexDirection: "column",
-  },
-};
+    flexDirection: "column"
+  }
+}
